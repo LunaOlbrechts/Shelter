@@ -25,10 +25,9 @@ namespace Shelter.Shared
        public bool Declawed {get; set;}
     }
 
-     public class Other : Animal
+     public class OtherAnimal : Animal
     {
        public string Description {get; set;}
        public string Kind {get; set;}
     }
-   
 }
