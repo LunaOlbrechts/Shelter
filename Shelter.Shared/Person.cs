@@ -11,14 +11,9 @@ namespace Shelter.Shared
         public string LastName { get; set; }
         public string BirthDate { get; set; }
     }
-<<<<<<< HEAD
-    public class Caretaker : Person{
-        
-=======
     public class Employee : Person
     {
 
->>>>>>> 15b2a1fffe6bc97a9986e83acfe19e06d008216a
     }
     public class Caretaker : Employee
     {
