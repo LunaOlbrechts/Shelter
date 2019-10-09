@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
+
 
 namespace Shelter.Shared
 {
@@ -15,6 +17,7 @@ namespace Shelter.Shared
     }
 
     public class Caretaker : Employee{
+        public ICollection<Animal> Animals {get; set;} = new List<Animal>();
 
     }
     public class Manager : Employee{
