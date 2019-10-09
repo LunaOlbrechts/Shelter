@@ -10,6 +10,7 @@ namespace Shelter.Shared
         public string BirthDate {get; set;}
     }
     public class Caretaker : Person{
+        
     }
     public class Manager : Person{
        

@@ -11,6 +11,7 @@ namespace Shelter.Shared
         public bool KidFriendly {get; set;}
         public string Since {get; set;}
         public string Race {get; set;}
+         
 
 
     }
