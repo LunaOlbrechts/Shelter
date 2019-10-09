@@ -11,8 +11,6 @@ namespace Shelter.Shared
         public bool IsChecked { get; set; }
         public bool KidFriendly { get; set; }
         public string Since { get; set; }
-        public string Caretaker { get; set; }
-
 
     }
 
