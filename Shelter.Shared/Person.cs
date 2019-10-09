@@ -9,13 +9,14 @@ namespace Shelter.Shared
         public string LastName {get; set;}
         public string BirthDate {get; set;}
     }
-    public class Employee : Person{
-        
-
+    public class Caretaker : Person{
     }
-
+    public class Manager : Person{
+       
+    }
+    public class Administrator : Person{
+       
+    }
     public class Owner : Person{
-        
-
     }
 }
