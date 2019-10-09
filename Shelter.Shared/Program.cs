@@ -18,9 +18,9 @@ namespace Shelter.Shared
 
             var Dog1 = new Dog() { Name = "Koda", DateOfBirth = "11-02-2017", IsChecked = true, KidFriendly = true, Since = "02-10-2019", Race = "Husky", Barker = false };
 
-            DierenbeschermingMechelen.ShelterAnimals.Add(Dog1);
+            DierenbeschermingMechelen.Animals.Add(Dog1);
             // print list of animals
-            DierenbeschermingMechelen.ShelterAnimals.ToList().ForEach(CurrentAnimal =>
+            DierenbeschermingMechelen.Animals.ToList().ForEach(CurrentAnimal =>
             {
                 Console.WriteLine($"{CurrentAnimal.Name} {CurrentAnimal.DateOfBirth} - Checked: {CurrentAnimal.IsChecked} - Kid friendly: {CurrentAnimal.KidFriendly} - In shelter since: {CurrentAnimal.Since}");
 

@@ -17,7 +17,7 @@ namespace Shelter.Shared
     }
     public class Caretaker : Employee
     {
-       public ICollection<Animal> CaretakerAnimals {get; set;} = new List<Animal>();
+       public ICollection<Animal> Animals {get; set;} = new List<Animal>();
     }
     public class Manager : Employee
     {
