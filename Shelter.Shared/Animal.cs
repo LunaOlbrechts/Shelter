@@ -5,6 +5,7 @@ using System.Linq;
 namespace Shelter.Shared
 {
      public class Animal{
+         public int? Id { get; set; }
         public string Name {get; set;}
         public string DateOfBirth {get; set;}
         public bool IsChecked {get; set;}

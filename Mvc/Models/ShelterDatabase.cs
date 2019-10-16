@@ -1,47 +1,38 @@
 using System.Collections.Generic;
 using Shelter.Shared;
 
-namespace Shelter.MVC.Models
+namespace Mvc.Models
 {
-  public class ShelterDatabase
-  {
-    private static bool _isInitialized = false;
-    private static IEnumerable<Animal> _animals = null;
-    private static Shelter.Shared.Shelter _shelter = null;
-
-    private static void Initialize()
+    public class ShelterDatabase
     {
-      if (!_isInitialized)
-      {
-        var DierenbeschermingMechelen = new Shelter.Shared.Shelter()
+        private static bool _isInitialized = false;
+        private static Shelter.Shared.Shelter _shelter = null;
+
+        private static void Initialize()
         {
-            Animals = new List<Animal> {
-                new Dog() { Name = "Koda", DateOfBirth = "11-02-2017", IsChecked = true, KidFriendly = true, Since = "02-10-2019", Race = "Husky", Barker = false}
+            if (!_isInitialized)
+            {
+                var DierenbeschermingMechelen = new Shelter.Shared.Shelter()
+                {
+                    Animals = new List<Animal> {
+                      new Dog() { Name = "Koda", DateOfBirth = "11-02-2017", IsChecked = true, KidFriendly = true, Since = "02-10-2019", Race = "Husky", Barker = false, Id=1},
+                      new Dog() { Name = "Beatle", DateOfBirth = "11-02-2017", IsChecked = true, KidFriendly = true, Since = "02-10-2019", Race = "Husky", Barker = false, Id=2},
+                      new Dog() { Name = "Bahia", DateOfBirth = "11-02-2017", IsChecked = true, KidFriendly = true, Since = "02-10-2019", Race = "Husky", Barker = false, Id=3},
+                    }
+                };
+
+                _shelter = DierenbeschermingMechelen;
+                _isInitialized = true;
+            }
         }
-        };
 
-        _shelter = Shelter;
-        _animals = Animals;
-        _isInitialized = true;
-      }
+        public static Shelter.Shared.Shelter Shelter
+        {
+            get
+            {
+                Initialize();
+                return _shelter;
+            }
+        }
     }
-
-    public static Shared.Shelter Shelter
-    {
-      get
-      {
-        Initialize();
-        return _shelter;
-      }
-    }
-    public static IEnumerable<Animal> Animals
-    {
-      get
-      {
-        Initialize();
-        return _animals;
-      }
-    }
-
-  }
 }

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Mvc.Models;
 using Shelter.Shared;
 
-namespace Shelter.Mvc.Controllers
+namespace Mvc.Controllers
 {
     public class ShelterController : Controller
     {
