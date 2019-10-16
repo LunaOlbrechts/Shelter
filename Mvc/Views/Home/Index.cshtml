@@ -9,3 +9,18 @@
 
 @model Shelter.Shared.Shelter
 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type Name</th>
+  </tr>
+  @foreach (var item in Model.Beers)
+  {
+    <tr>
+      <td><a asp-controller="Beer" asp-action="Detail" asp-route-id=@item.Id>@item.Animal.Name</a></td>
+      <td>@item.BeerType.Name</td>
+      <td><a asp-controller="Beer" asp-action="Delete" asp-route-id=@item.Id>Delete</a></td>
+
+    </tr>
+  }
+</table>
