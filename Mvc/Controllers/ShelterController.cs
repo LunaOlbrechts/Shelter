@@ -17,7 +17,7 @@ namespace Shelter.Mvc.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(ShelterDatabase.Shelter);
         }
     }
 }
