@@ -1,9 +1,9 @@
 @model Shelter.Shared.Animal
 
-<form asp-controller="Shelter" asp-action="Edit" method="POST">
+<form asp-controller="Shelter" asp-action="DoEdit" method="POST">
   <input asp-for="Id" type="hidden">
   <p style="font-weight: bold">Name:</p>
-  <input type="text" name="AnimalName" value=@Model.Name>
+  <input asp-for="Name">
   <button type="submit" class="btn btn-danger">Update</button>
   <a asp-controller="Shelter" asp-action="Index"><button type="button" class="btn btn-success">Back</button></a>
 </form>
