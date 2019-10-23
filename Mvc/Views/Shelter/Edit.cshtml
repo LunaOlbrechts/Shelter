@@ -1,0 +1,9 @@
+@model Shelter.Shared.Animal
+
+<form asp-controller="Shelter" asp-action="Edit">
+  <input asp-for="Id" type="hidden">
+  <p style="font-weight: bold">Name:</p>
+  
+  <button type="submit" class="btn btn-danger">Update</button>
+  <a asp-controller="Shelter" asp-action="Index"><button type="button" class="btn btn-success">Back</button></a>
+</form>

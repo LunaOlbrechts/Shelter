@@ -12,6 +12,7 @@
       <td>@item.Id</td>
       <td><a asp-controller="Shelter" asp-action="Detail" asp-route-id=@item.Id>@item.Name</a></td>
       <td><a asp-controller="Shelter" asp-action="Delete" asp-route-id=@item.Id><button type="button" class="btn btn-danger">Delete</button></a></td>
+      <td><a asp-controller="Shelter" asp-action="Edit" asp-route-id=@item.Id>Edit</a></td>
     </tr>
   }
 

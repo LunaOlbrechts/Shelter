@@ -51,5 +51,15 @@ namespace Mvc.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+
+        public IActionResult Edit(int id)
+        {
+            var targetAnimal = ShelterDatabase.Shelter.Animals.FirstOrDefault(x => x.Id == id);
+            if (targetAnimal == default(Animal))
+            {
+                return NotFound();
+            }
+            return View(targetAnimal);
+        }
     }
 }
