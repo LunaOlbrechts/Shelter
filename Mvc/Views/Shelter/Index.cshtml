@@ -10,7 +10,7 @@
   {
     <tr>
       <td>@item.Id</td>
-      <td>@item.Name</td>
+      <td><a asp-controller="Shelter" asp-action="Detail" asp-route-id=@item.Id>@item.Name</a></td>
     </tr>
   }
 

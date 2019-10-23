@@ -19,5 +19,15 @@ namespace Mvc.Controllers
         {
             return View(ShelterDatabase.Shelter);
         }
+
+        public IActionResult Detail(int id)
+        {
+            var targetAnimal = ShelterDatabase.Shelter.Animals.FirstOrDefault(x => x.Id == id);
+            if (targetAnimal == default(Animal))
+            {
+                return NotFound();
+            }
+            return View(targetAnimal);
+        }
     }
 }
