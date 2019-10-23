@@ -11,7 +11,7 @@
     <tr>
       <td>@item.Id</td>
       <td><a asp-controller="Shelter" asp-action="Detail" asp-route-id=@item.Id>@item.Name</a></td>
-      <td><button>Delete</button>
+      <td><a asp-controller="Shelter" asp-action="Delete" asp-route-id=@item.Id class="button danger">Delete</a>
     </tr>
   }
 
