@@ -13,7 +13,6 @@ namespace Shelter.Shared
         public string Since {get; set;}
         public string Race {get; set;}
 
-
     }
 
     public class Dog : Animal
