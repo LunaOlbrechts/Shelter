@@ -1,18 +1,14 @@
 @model Shelter.Shared.Shelter
 
 <table>
-  <tr>
-    <th>Name</th>
-
-  </tr>
-  @foreach (var item in Model.Animals)
-  {
     <tr>
-      <td><a asp-controller="Shelter" asp-action="Detail" asp-route-id=@item.Id>@item.Name</a></td>
-      <td><a asp-controller="Shelter" asp-action="Delete" asp-route-id=@item.Id><button type="button" class="btn btn-danger">Delete</button></a></td>
-      <td><a asp-controller="Shelter" asp-action="Edit" asp-route-id=@item.Id>Edit</a></td>
+        <th width= "300px">Name</th>
+        <th>Owner</th>
     </tr>
-  }
-
-
-  </table>
+  
+    @foreach (var item in Model.Name)
+    {
+    }
+  
+     
+</table>

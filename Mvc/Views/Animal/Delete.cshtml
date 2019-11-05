@@ -4,9 +4,9 @@
 Are you sure you want to delete <em>@Model.Name</em> ?
 </p>
 
-<form asp-controller="Shelter" asp-action="DoDelete" method="POST">
+<form asp-controller="Animal" asp-action="DoDelete" method="POST">
   <input asp-for="Id" type="hidden">
-  <a asp-controller="Shelter" asp-action="Index"><button type="button" class="btn btn-success">Back</button></a>
+  <a asp-controller="Animal" asp-action="Index"><button type="button" class="btn btn-success">Back</button></a>
   <button type="submit" class="btn btn-danger">Delete</button>
 </form>
 
