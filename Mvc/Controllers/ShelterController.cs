@@ -5,10 +5,13 @@ using Mvc.Models;
 using Shelter.Shared;
 using System.Collections.Generic;
 using System.Net;
+using System.Web;
+
 
 namespace Mvc.Controllers
 {
     [ApiController]
+    [Route("api/[controller]/[action]")]
     public class ShelterController : ApiControllerAttribute
     {
         Shelters[] Shelter = new Shelters[]
@@ -25,10 +28,10 @@ namespace Mvc.Controllers
         }
 
         // GET: api/Shelter/1
-        [HttpGet("{id}")]
         public IEnumerable<Shelters> GetAllShelters()
         {
             return Shelter;
         }
+
     }
 }
