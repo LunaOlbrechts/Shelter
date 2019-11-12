@@ -6,8 +6,12 @@ using Shelter.Shared;
 
 namespace Mvc.Controllers
 {
-    public class ShelterController : Controller
+    [ApiController]
+
+
+    public class ShelterController : ControllerBase
     {
+
         private readonly ILogger<ShelterController> _logger;
 
         public ShelterController(ILogger<ShelterController> logger)
@@ -15,10 +19,13 @@ namespace Mvc.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        // GET api
+        [HttpGet("{Animals/id}")]
+        public string Get(int id)
         {
-            return View(ShelterDatabase.Shelter);
+            return "value";
         }
+
 
         public IActionResult Detail(int id)
         {
