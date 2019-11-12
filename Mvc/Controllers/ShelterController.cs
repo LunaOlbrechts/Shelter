@@ -7,8 +7,6 @@ using Shelter.Shared;
 namespace Mvc.Controllers
 {
     [ApiController]
-
-
     public class ShelterController : ControllerBase
     {
 
@@ -19,14 +17,11 @@ namespace Mvc.Controllers
             _logger = logger;
         }
 
-        // GET api
-        [HttpGet("{Animals/id}")]
+        // GET: api/Shelter/1
+        [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
-
-
-        
     }
 }
