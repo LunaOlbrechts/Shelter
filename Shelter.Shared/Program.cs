@@ -11,7 +11,7 @@ namespace Shelter.Shared
         static void Main(string[] args)
         {
             //make new object of shelter
-            var DierenbeschermingMechelen = new Shelter() { Name = "Dierenbescherming Mechelen" };
+            var DierenbeschermingMechelen = new Shelters() { Name = "Dierenbescherming Mechelen" };
             // make new object of person
             var Owner = new Person { FirstName = "Thomas", LastName = "Van Hemelrijk" };
             var Dog1 = new Dog() { Name = "Koda", DateOfBirth = "11-02-2017", IsChecked = true, KidFriendly = true, Since = "02-10-2019", Race = "Husky", Barker = false };

@@ -6,20 +6,20 @@ namespace Mvc.Models
     public class ShelterDatabase
     {
         private static bool _isInitialized = false;
-        private static Shelter.Shared.Shelter _shelter = null;
+        private static Shelter.Shared.Shelters _shelter = null;
 
 
         private static void Initialize()
         {
             if (!_isInitialized)
             {
-                var Dierenopvangcentrum = new Shelter.Shared.Shelter()
+                var Dierenopvangcentrum = new Shelter.Shared.Shelters()
                 {
                     Name = "Dierenopvangcentrum Zemst",
                     Owner = "Kurt Olbrechts"
                 };
 
-                var DierenbeschermingMechelen = new Shelter.Shared.Shelter()
+                var DierenbeschermingMechelen = new Shelter.Shared.Shelters()
                 {
                     Name = "Dierenbescherming Mechelen",
                     Owner = "Pieter Verelst",
@@ -42,7 +42,7 @@ namespace Mvc.Models
             }
         }
 
-        public static Shelter.Shared.Shelter Shelter
+        public static Shelter.Shared.Shelters Shelter
         {
             get
             {

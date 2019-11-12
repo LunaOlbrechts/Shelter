@@ -6,8 +6,9 @@ using System.Linq;
 
 namespace Shelter.Shared
 {
-    public class Shelter
+    public class Shelters
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Owner { get; set; }
         public string Adress { get; set; }
