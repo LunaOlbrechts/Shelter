@@ -6,6 +6,8 @@ using Shelter.Shared;
 using System.Collections.Generic;
 using System.Net;
 using System.Web;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Mvc.Controllers
 {
