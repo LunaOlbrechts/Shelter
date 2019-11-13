@@ -9,4 +9,9 @@
     <ProjectReference Include="..\Shelter.Shared\Shelter.Shared.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <PackageReference Include="IBM.EntityFrameworkCore-osx" Version="1.3.0.100" />
+  </ItemGroup>
+
 </Project>
