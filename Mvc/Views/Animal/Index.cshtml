@@ -1,9 +1,7 @@
 @model Shelter.Shared.Shelters
-
 <table>
   <tr>
     <th>Name</th>
-
   </tr>
   @foreach (var item in Model.Animals)
   {
@@ -13,6 +11,4 @@
       <td><a asp-controller="Animal" asp-action="Edit" asp-route-id=@item.Id>Edit</a></td>
     </tr>
   }
-
-
   </table>

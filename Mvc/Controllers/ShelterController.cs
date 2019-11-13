@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web;
 
-
 namespace Mvc.Controllers
 {
     [ApiController]
@@ -18,20 +17,16 @@ namespace Mvc.Controllers
         {
             new Shelters { Id = 1, Name = "Dierenbescherming Mechelen", Owner ="Kurt Olbrechts"},
             new Shelters { Id = 2, Name = "Dierenopvangcentrum Zemst", Owner="Liesbet Van Hemelrijk"},
-
         };
         private readonly ILogger<ShelterController> _logger;
-
         public ShelterController(ILogger<ShelterController> logger)
         {
             _logger = logger;
         }
-
         // GET: api/Shelter/1
         public IEnumerable<Shelters> GetAllShelters()
         {
             return Shelter;
         }
-
     }
 }

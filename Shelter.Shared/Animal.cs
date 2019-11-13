@@ -14,17 +14,14 @@ namespace Shelter.Shared
         public string Since { get; set; }
         public string Race { get; set; }
     }
-
     public class Dog : Animal
     {
         public bool Barker { get; set; }
     }
-
     public class Cat : Animal
     {
         public bool Declawed { get; set; }
     }
-
     public class OtherAnimal : Animal
     {
         public string Description { get; set; }

@@ -9,17 +9,14 @@ namespace Mvc.Controllers
     public class AnimalController : Controller
     {
         private readonly ILogger<AnimalController> _logger;
-
         public AnimalController(ILogger<AnimalController> logger)
         {
             _logger = logger;
         }
-
         public IActionResult Index()
         {
             return View(ShelterDatabase.Shelter);
         }
-
         public IActionResult Detail(int id)
         {
             var targetAnimal = ShelterDatabase.Shelter.Animals.FirstOrDefault(x => x.Id == id);
@@ -38,7 +35,6 @@ namespace Mvc.Controllers
             }
             return View(targetAnimal);
         }
-
         [HttpPost]
         public IActionResult DoDelete(int id)
         {
@@ -49,9 +45,7 @@ namespace Mvc.Controllers
             }
             ShelterDatabase.Shelter.Animals.Remove(targetAnimal);
             return RedirectToAction(nameof(Index));
-
         }
-
         public IActionResult Edit(int id)
         {
             var targetAnimal = ShelterDatabase.Shelter.Animals.FirstOrDefault(x => x.Id == id);
@@ -70,7 +64,6 @@ namespace Mvc.Controllers
             }
             targetAnimal.Name = name;
             return RedirectToAction(nameof(Index));
-
         }
     }
 }

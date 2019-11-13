@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-
 namespace Shelter.Shared
 {
    public class Person{
@@ -11,20 +10,14 @@ namespace Shelter.Shared
         public string LastName {get; set;}
         public string BirthDate {get; set;}
     }
-
     public class Employee : Person{
-
     }
-
     public class Caretaker : Employee{
         public ICollection<Animal> Animals {get; set;} = new List<Animal>();
-
     }
     public class Manager : Employee{
-       
     }
     public class Administrator : Employee{
-       
     }
     public class Owner : Employee{
     }
