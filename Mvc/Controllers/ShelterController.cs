@@ -16,8 +16,16 @@ namespace Mvc.Controllers
     {
         Shelters[] Shelter = new Shelters[]
         {
-            new Shelters { Id = 1, Name = "Dierenbescherming Mechelen", Owner ="Kurt Olbrechts"},
-            new Shelters { Id = 2, Name = "Dierenopvangcentrum Zemst", Owner="Liesbet Van Hemelrijk"},
+            new Shelters { Id = 1, Name = "Dierenbescherming Mechelen", Owner = new Person()
+                {
+                    FirstName = "Kurt",
+                    LastName = "Olbrechts"
+                }},
+            new Shelters { Id = 2, Name = "Dierenopvangcentrum Zemst", Owner= new Person()
+                {
+                    FirstName = "Liesbet",
+                    LastName = "Van Hemelrijk"
+                }},
         };
         private readonly ILogger<ShelterController> _logger;
         public ShelterController(ILogger<ShelterController> logger)

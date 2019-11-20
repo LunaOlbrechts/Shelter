@@ -39,7 +39,8 @@ namespace Shelter.Shared
                 Name = "Dierenbescherming Mechelen",
                 Owner = new Person()
                 {
-                    FullName = "Kurt Olbrechts"
+                    FirstName = "Kurt",
+                    LastName = "Olbrechts"
                 },
                 Animals = new List<Animal> {
             new Dog() { Name = "Koda", DateOfBirth = "11-02-2017", IsChecked = true, KidFriendly = true, Since = "02-09-2019", Race = "Husky", Barker = false, Id=1},

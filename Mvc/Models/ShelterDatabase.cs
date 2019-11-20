@@ -14,12 +14,20 @@ namespace Mvc.Models
                 var Dierenopvangcentrum = new Shelter.Shared.Shelters()
                 {
                     Name = "Dierenopvangcentrum Zemst",
-                    Owner = "Kurt Olbrechts"
+                    Owner = new Person()
+                {
+                    FirstName = "Kurt",
+                    LastName = "Olbrechts"
+                }
                 };
                 var DierenbeschermingMechelen = new Shelter.Shared.Shelters()
                 {
                     Name = "Dierenbescherming Mechelen",
-                    Owner = "Pieter Verelst",
+                    Owner = new Person()
+                {
+                    FirstName = "Pieter",
+                    LastName = "Verelst"
+                },
                     Animals = new List<Animal> {
                       new Dog() { Name = "Koda", DateOfBirth = "11-02-2017", IsChecked = true, KidFriendly = true, Since = "02-09-2019", Race = "Husky", Barker = false, Id=1},
                       new Dog() { Name = "Beatle", DateOfBirth = "06-10-2012", IsChecked = false, KidFriendly = true, Since = "15-10-2018", Race = "Beatle", Barker = true, Id=2},
