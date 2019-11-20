@@ -19,6 +19,8 @@ namespace Mvc.Controllers
         }
         public IActionResult Detail(int id)
         {
+            //aparte classe maken om info uit database op te halen (Factory)
+            //Graphql kunnen aan en uitzetten zonder programma crasht!! 
             var targetAnimal = ShelterDatabase.Shelter.Animals.FirstOrDefault(x => x.Id == id);
             if (targetAnimal == default(Animal))
             {
