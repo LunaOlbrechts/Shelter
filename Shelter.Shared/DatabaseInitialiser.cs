@@ -8,7 +8,6 @@ namespace Shelter.Shared
     {
         void Initialize();
     }
-
     public class DatabaseInitializer : IDatabaseInitializer
     {
         private ShelterContext _context;
@@ -33,10 +32,8 @@ namespace Shelter.Shared
 
             }
         }
-
         private void AddData()
         {
-
             var Shelter = new Shelters()
             {
                 Name = "Dierenbescherming Mechelen",
@@ -53,7 +50,6 @@ namespace Shelter.Shared
          }
             };
             _context.Shelters.Add(Shelter);
-
             _context.SaveChanges();
         }
     }
