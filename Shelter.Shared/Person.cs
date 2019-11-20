@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 namespace Shelter.Shared
 {
-   public class Person{
+   public class Person : BaseDbClass
+   {
         public string FullName => $"{LastName}, ${FirstName}";
         public string FirstName {get; set;}
         public string LastName {get; set;}

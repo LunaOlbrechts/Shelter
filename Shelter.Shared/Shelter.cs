@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Shelter.Shared
 {
-    public class Shelters
+    public class Shelters : BaseDbClass
     {
         public int Id { get; set; }
         public string Name { get; set; }
