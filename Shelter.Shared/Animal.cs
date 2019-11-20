@@ -6,7 +6,7 @@ namespace Shelter.Shared
 {
     public class Animal : BaseDbClass
     {
-        public int? Id { get; set; }
+        public int? AnimalId { get; set; }
         public string Name { get; set; }
         public string DateOfBirth { get; set; }
         public bool IsChecked { get; set; }

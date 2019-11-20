@@ -7,7 +7,7 @@ namespace Shelter.Shared
 {
     public class Shelters : BaseDbClass
     {
-        public int Id { get; set; }
+        public int ShelterId { get; set; }
         public string Name { get; set; }
         public string Owner { get; set; }
         public string Adress { get; set; }
