@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace Shelter.Shared
+namespace Mvc.Models
 {
-     public class BloggingContext : DbContext
+    public class AnimalContext : DbContext
     {
-        public DbSet<Animal> Animals { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite("Data Source=shelter.db");
     }
