@@ -4,10 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mvc.Models;
+using Shelter.Shared;
 
 namespace Mvc.Migrations
 {
-    [DbContext(typeof(AnimalContext))]
+    [DbContext(typeof(Shelter.Shared.ShelterContext))]
     partial class AnimalContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
