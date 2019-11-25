@@ -13,7 +13,7 @@ namespace Mvc.Controllers
         {
             _logger = logger;
         }
-       /*  public IActionResult Index()
+        public IActionResult Index()
         {
             return View(ShelterDatabase.Shelter);
         }
@@ -66,6 +66,6 @@ namespace Mvc.Controllers
             }
             targetAnimal.Name = name;
             return RedirectToAction(nameof(Index));
-        } */
-    } 
+        }
+    }
 }
