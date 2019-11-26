@@ -6,7 +6,7 @@ using Shelter.Shared;
 
 namespace Mvc.Controllers
 {
-    [Route("/api/shelters")]
+    [Route("/api/animals")]
     public class AnimalController : Controller
     {
         private readonly ILogger<AnimalController> _logger;

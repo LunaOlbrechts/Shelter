@@ -23,7 +23,7 @@ namespace Mvc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            //services.AddDbContext<ShelterContext>(options => options.UseSqlite(Configuration.GetConnectionString("ShelterContext")));
+            services.AddDbContext<ShelterContext>(options => options.UseSqlite(Configuration.GetConnectionString("ShelterContext")));
             services.AddScoped<IDatabaseInitializer, DatabaseInitializer>();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
