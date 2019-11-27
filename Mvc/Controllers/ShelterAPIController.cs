@@ -41,7 +41,7 @@ namespace Mvc.Controllers
         {
             // if you don't find the shelter, return a 404. Again, an empty list is an empty list so empty list of animal is a valid result.
             var animals = _dataAccess.GetAnimals(id);
-            
+
             return animals == default(IEnumerable<Animal>) ? (IActionResult)NotFound() : Ok(animals);
         }
         [HttpGet("{shelterId}/animals/{animalId}")]
@@ -50,6 +50,18 @@ namespace Mvc.Controllers
             // this can return two kinds of 404's; one for the non-existing shelter and one for the non-existing animal.
             var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
             return animal == default(Shelter.Shared.Animal) ? (IActionResult)NotFound() : Ok(animal);
+        }
+
+        [HttpPost("{id}/animals")]
+        public IActionResult DeleteAnimal(int animalId, int shelterId)
+        {
+            var targetAnimal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
+            if (targetAnimal == default(Animal))
+            {
+                return NotFound();
+            }
+            ShelterContext.Animals.Remove(targetAnimal);
+            return RedirectToAction(nameof(GetShelterAnimals));
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Mvc
         Shelter.Shared.Shelters GetShelterById(int id);
         IEnumerable<Animal> GetAnimals(int animalId);
         Animal GetAnimalByShelterAndId(int shelterId, int animalId);
+        IEnumerable<Animal> DeleteAnimal(int id, int shelterId);
     }
     public class ShelterDataAccess : IShelterDataAccess
     {
@@ -44,6 +45,12 @@ namespace Mvc
         public Shelter.Shared.Shelters GetShelterById(int id)
         {
             return _context.Shelters.FirstOrDefault(x => x.Id == id);
+        }
+        public IEnumerable<Animal> DeleteAnimal(int id, int shelterId)
+        {
+            return _context.Shelters
+                .Include(Shelter => Shelter.Animals)
+                .FirstOrDefault(x => x.Id == shelterId)?.Animals;
         }
     }
 }
