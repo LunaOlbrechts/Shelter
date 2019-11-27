@@ -22,7 +22,7 @@ namespace Mvc.Controllers
         [Route("")]
         public IActionResult GetAllShelters()
         {
-            return Ok(_dataAccess.Shelters);
+            return Ok(_dataAccess.GetAllShelters);
         }
     }
 }

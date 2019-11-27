@@ -34,7 +34,7 @@ namespace Mvc.Controllers
         {
             // Either you find the brewery or not. If you don't find your resource return a 404 (as per https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)
             var shelter = _dataAccess.GetShelterById(id); ;
-            return shelter == default(Shared.Shelter) ? (IActionResult)NotFound() : Ok(shelter);
+            return shelter == default(Shelter.Shared.Shelters) ? (IActionResult)NotFound() : Ok(shelter);
         }
         [HttpGet("{id}/animals")]
         public IActionResult GetShelterAnimals(int id)
@@ -48,7 +48,7 @@ namespace Mvc.Controllers
         {
             // this can return two kinds of 404's; one for the non-existing brewery and one for the non-existing beer.
             var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
-            return animal == default(Shared.Animal) ? (IActionResult)NotFound() : Ok(animal);
+            return animal == default(Shelter.Shared.Animal) ? (IActionResult)NotFound() : Ok(animal);
         }
     }
 }
