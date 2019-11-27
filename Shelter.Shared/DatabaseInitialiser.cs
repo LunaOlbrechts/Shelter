@@ -29,7 +29,6 @@ namespace Shelter.Shared
             catch (Exception ex)
             {
                 _logger.LogCritical(ex, "Error occurred while creating database");
-
             }
         }
         private void AddData()

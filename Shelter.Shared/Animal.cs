@@ -11,7 +11,6 @@ namespace Shelter.Shared
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite("Data Source=shelter.db");
     }
-
     public class Animal : BaseDbClass
     {
         public string Name { get; set; }

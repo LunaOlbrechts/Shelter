@@ -6,7 +6,7 @@ namespace Shelter.Shared
     {
         public ShelterContext(DbContextOptions<ShelterContext> options) : base(options)
         {
-
+            
         }
         public DbSet<Animal> Animals { get; set; }
         public DbSet<Shelters> Shelters { get; set; }

@@ -50,6 +50,7 @@ namespace Mvc
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            databaseInitializer.Initialize();
         }
     }
 }
