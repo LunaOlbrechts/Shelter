@@ -32,15 +32,16 @@ namespace Mvc.Controllers
         [HttpGet("{id}")]
         public IActionResult GetShelter(int id)
         {
-            // Either you find the brewery or not. If you don't find your resource return a 404 (as per https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)
+            // Either you find the shelter or not. If you don't find your resource return a 404 (as per https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)
             var shelter = _dataAccess.GetShelterById(id); ;
             return shelter == default(Shelter.Shared.Shelters) ? (IActionResult)NotFound() : Ok(shelter);
         }
         [HttpGet("{id}/animals")]
         public IActionResult GetShelterAnimals(int id)
         {
-            // if you don't find the brewery, return a 404. Again, an empty list is an empty list so empty list of beer is a valid result.
+            // if you don't find the shelter, return a 404. Again, an empty list is an empty list so empty list of beer is a valid result.
             var animals = _dataAccess.GetAnimals(id);
+            
             return animals == default(IEnumerable<Animal>) ? (IActionResult)NotFound() : Ok(animals);
         }
         [HttpGet("{shelterId}/animals/{animalId}")]
