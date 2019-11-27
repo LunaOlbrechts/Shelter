@@ -47,7 +47,7 @@ namespace Mvc.Controllers
         [HttpGet("{shelterId}/animals/{animalId}")]
         public IActionResult GetAnimalDetails(int shelterId, int animalId)
         {
-            // this can return two kinds of 404's; one for the non-existing brewery and one for the non-existing beer.
+            // this can return two kinds of 404's; one for the non-existing shelter and one for the non-existing animal.
             var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
             return animal == default(Shelter.Shared.Animal) ? (IActionResult)NotFound() : Ok(animal);
         }
