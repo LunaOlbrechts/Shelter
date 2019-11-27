@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Shelter.Shared
 {
-     public class BloggingContext : DbContext
+    public class BloggingContext : DbContext
     {
         public DbSet<Animal> Animals { get; set; }
 
@@ -15,7 +15,6 @@ namespace Shelter.Shared
 
     public class Animal : BaseDbClass
     {
-        public int? AnimalId { get; set; }
         public string Name { get; set; }
         public string DateOfBirth { get; set; }
         public bool IsChecked { get; set; }
