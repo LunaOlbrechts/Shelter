@@ -8,7 +8,6 @@ namespace Shelter.Shared
     public class BloggingContext : DbContext
     {
         public DbSet<Animal> Animals { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite("Data Source=shelter.db");
     }
