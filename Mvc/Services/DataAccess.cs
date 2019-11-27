@@ -3,13 +3,13 @@ using System.Linq;
 using Shelter.Shared;
 using Microsoft.EntityFrameworkCore;
 
-namespace Shelter.MVC
+namespace Mvc
 {
     public interface IShelterDataAccess
     {
-        IEnumerable<Shared.Shelters> GetAllShelters();
-        IEnumerable<Shared.Shelters> GetAllSheltersFull();
-        Shared.Shelters GetShelterById(int id);
+        IEnumerable<Shelter.Shared.Shelters> GetAllShelters();
+        IEnumerable<Shelter.Shared.Shelters> GetAllSheltersFull();
+        Shelter.Shared.Shelters GetShelterById(int id);
         IEnumerable<Animal> GetAnimals(int animalId);
         Animal GetAnimalByShelterAndId(int shelterId, int animalId);
     }
@@ -20,11 +20,11 @@ namespace Shelter.MVC
         {
             _context = context;
         }
-        public IEnumerable<Shared.Shelters> GetAllShelters()
+        public IEnumerable<Shelter.Shared.Shelters> GetAllShelters()
         {
             return _context.Shelters;
         }
-        public IEnumerable<Shared.Shelters> GetAllSheltersFull()
+        public IEnumerable<Shelter.Shared.Shelters> GetAllSheltersFull()
         {
             return _context.Shelters
               .Include(Shelter => Shelter.Animals)
@@ -41,7 +41,7 @@ namespace Shelter.MVC
               .Include(Shelter => Shelter.Animals)
               .FirstOrDefault(x => x.Id == shelterId)?.Animals;
         }
-        public Shared.Shelters GetShelterById(int id)
+        public Shelter.Shared.Shelters GetShelterById(int id)
         {
             return _context.Shelters.FirstOrDefault(x => x.Id == id);
         }

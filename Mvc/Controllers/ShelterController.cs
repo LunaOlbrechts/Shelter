@@ -13,16 +13,16 @@ namespace Mvc.Controllers
     public class ShelterController : Controller
     {
         private readonly ILogger<ShelterController> _logger;
-        private readonly ShelterContext _shelterContext;
-        public ShelterController(ILogger<ShelterController> logger, ShelterContext shelterContext)
+        private readonly IShelterDataAccess _dataAccess;
+        public ShelterController(ILogger<ShelterController> logger, IShelterDataAccess dataAccess)
         {
             _logger = logger;
-            _shelterContext = shelterContext;
+            _dataAccess = dataAccess;
         }
         [Route("")]
         public IActionResult GetAllShelters()
         {
-            return Ok(_shelterContext.Animals);
+            return Ok(_dataAccess.Shelters);
         }
     }
 }
