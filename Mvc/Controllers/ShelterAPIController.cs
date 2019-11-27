@@ -41,6 +41,7 @@ namespace Mvc.Controllers
         {
             // if you don't find the shelter, return a 404. Again, an empty list is an empty list so empty list of animal is a valid result.
             var animals = _dataAccess.GetAnimals(id);
+            
             return animals == default(IEnumerable<Animal>) ? (IActionResult)NotFound() : Ok(animals);
         }
         [HttpGet("{shelterId}/animals/{animalId}")]
