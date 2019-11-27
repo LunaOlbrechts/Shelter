@@ -19,7 +19,6 @@ namespace Mvc.Controllers
             _logger = logger;
             _shelterContext = shelterContext;
         }
-
         [Route("")]
         public IActionResult GetAllShelters()
         {
