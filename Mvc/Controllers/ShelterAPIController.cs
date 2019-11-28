@@ -55,13 +55,7 @@ namespace Mvc.Controllers
         [HttpPost("{id}/animals")]
         public IActionResult DeleteAnimal(int animalId, int shelterId)
         {
-            var targetAnimal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
-            if (targetAnimal == default(Animal))
-            {
-                return NotFound();
-            }
-            ShelterContext.Animals.Remove(targetAnimal);
-            return RedirectToAction(nameof(GetShelterAnimals));
+            
         }
     }
 }
