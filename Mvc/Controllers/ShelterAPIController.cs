@@ -55,7 +55,8 @@ namespace Mvc.Controllers
         [HttpPost("{id}/animals")]
         public IActionResult DeleteAnimal(int animalId, int shelterId)
         {
-            
+            var animals = _dataAccess.DeleteAnimal(animalId, shelterId);
+            return animals == default(IEnumerable<Animal>) ? (IActionResult)NotFound() : Ok(animals);
         }
     }
 }
