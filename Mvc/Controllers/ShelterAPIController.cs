@@ -11,12 +11,14 @@ namespace Mvc.Controllers
     [Route("/api/shelters")]
     public class ShelterAPIController : Controller
     {
+        private ShelterContext _context;
         private readonly IShelterDataAccess _dataAccess;
         private readonly ILogger<ShelterAPIController> _logger;
-        public ShelterAPIController(ILogger<ShelterAPIController> logger, IShelterDataAccess dataAccess)
+        public ShelterAPIController(ILogger<ShelterAPIController> logger, IShelterDataAccess dataAccess, ShelterContext context)
         {
             _dataAccess = dataAccess;
             _logger = logger;
+            _context = context;
         }
         [HttpGet("/")]
         public IActionResult GetAllShelters()
@@ -51,11 +53,19 @@ namespace Mvc.Controllers
             var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
             return animal == default(Shelter.Shared.Animal) ? (IActionResult)NotFound() : Ok(animal);
         }
-        [HttpPost("{id}/animals")]
+        [HttpPost("{id}/animals/delete")]
+        [ValidateAntiForgeryToken]
         public IActionResult DeleteAnimal(int animalId, int shelterId)
         {
-            var animals = _dataAccess.DeleteAnimal(animalId, shelterId);
-            return animals == default(IEnumerable<Animal>) ? (IActionResult)NotFound() : Ok(animals);
+           
+                Animal animal = _context.Animals.Find(animalId);
+                _context.Animals.Remove(animal);
+                _context.SaveChanges();
+           
+            return RedirectToAction("Index");
         }
+
+
+
     }
 }

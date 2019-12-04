@@ -8,8 +8,8 @@ namespace Shelter.Shared
         {
             
         }
-        public DbSet<Animal> Animals { get; set; }
-        public DbSet<Shelters> Shelters { get; set; }
-        public DbSet<Owner> Owners { get; set; }
+        public  DbSet<Animal> Animals { get; set; }
+        public  DbSet<Shelters> Shelters { get; set; }
+        public  DbSet<Owner> Owners { get; set; }
     }
 }
