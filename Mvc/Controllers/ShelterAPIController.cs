@@ -43,7 +43,6 @@ namespace Mvc.Controllers
         {
             // if you don't find the shelter, return a 404. Again, an empty list is an empty list so empty list of animal is a valid result.
             var animals = _dataAccess.GetAnimals(id);
-
             return animals == default(IEnumerable<Animal>) ? (IActionResult)NotFound() : Ok(animals);
         }
         [HttpGet("{shelterId}/animals/{animalId}")]
@@ -57,15 +56,10 @@ namespace Mvc.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteAnimal(int animalId, int shelterId)
         {
-           
-                Animal animal = _context.Animals.Find(animalId);
-                _context.Animals.Remove(animal);
-                _context.SaveChanges();
-           
+            Animal animal = _context.Animals.Find(animalId);
+            _context.Animals.Remove(animal);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
-
-
-
     }
 }

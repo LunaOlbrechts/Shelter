@@ -35,7 +35,6 @@ namespace Shelter.UnitTests
         public void Test_Empty()
         {
 
-
         }
         // Testing on valid characters
         [Test]
