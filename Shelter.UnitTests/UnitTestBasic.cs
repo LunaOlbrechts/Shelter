@@ -40,7 +40,7 @@ namespace Shelter.UnitTests
         [Test]
         public void Test_ValidCharacters()
         {
-
+            
         }
         // Testing on unique id's 
         [Test]
@@ -52,8 +52,8 @@ namespace Shelter.UnitTests
         [Test]
         public void Test_IdNotFound()
         {
-            _mockedDataAccess.Setup(x => x.GetShelterById(13)).Returns(default(Shelter.Shared.Shelters));
-            var result = _controller.GetShelter(13);
+            _mockedDataAccess.Setup(x => x.GetShelterById(19)).Returns(default(Shelter.Shared.Shelters));
+            var result = _controller.GetShelter(19);
             Assert.IsInstanceOf(typeof(NotFoundResult), result);
         }
     }
