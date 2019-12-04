@@ -2,6 +2,7 @@ using NUnit.Framework;
 using Mvc.Controllers;
 using Moq;
 using Mvc;
+using Shelter.Shared;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,13 +13,15 @@ namespace Shelter.UnitTests
     {
         private Mock<IShelterDataAccess> _mockedDataAccess;
         private Mock<ILogger<ShelterAPIController>> _mockedLogger;
+        private Mock<ShelterContext> _mockedContext;
         private ShelterAPIController _controller;
         [SetUp]
         public void Setup()
         {
             _mockedDataAccess = new Mock<IShelterDataAccess>(MockBehavior.Strict);
             _mockedLogger = new Mock<ILogger<ShelterAPIController>>(MockBehavior.Strict);
-            _controller = new ShelterAPIController(_mockedLogger.Object, _mockedDataAccess.Object);
+            _mockedContext = new Mock<ShelterContext>(MockBehavior.Strict);
+            _controller = new ShelterAPIController(_mockedLogger.Object, _mockedDataAccess.Object, _mockedContext.Object);
         }
         [TearDown]
         public void TearDown()
