@@ -51,18 +51,6 @@ namespace Mvc.Controllers
             var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
             return animal == default(Shelter.Shared.Animal) ? (IActionResult)NotFound() : Ok(animal);
         }
-        [HttpGet("animals/update")]
-        public ActionResult<Animal> UpdateAnimal(int animalId, string name)
-        {
-            var targetAnimal = Shelter.Animals.FirstOrDefault(x => x.Id == animalId);
-            if (targetAnimal == default(Animal))
-            {
-                return NotFound();
-            }
-            targetAnimal.Name = name;
-            return RedirectToAction(nameof(GetShelterAnimals));
-        }
-
         [HttpPost("{id}/animals")]
         public IActionResult DeleteAnimal(int animalId, int shelterId)
         {
