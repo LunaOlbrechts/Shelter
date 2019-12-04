@@ -30,49 +30,34 @@ namespace Shelter.UnitTests
         }
 
         // These tests can be run using dotnet test
-
+        // Testing on empty fields 
         [Test]
-        public void Test_GetAll()
+        public void Test_Empty()
         {
-            var Shelters = new List<Shelter.Shared.Shelter>();
 
-            _mockedDataAccess.Setup(x => x.GetAllShelters()).Returns(Shelters);
-            // uncomment the next line, run the test, read the exception message.
-            // mockedDataAccess.Setup(x => x.GetAllSheltersFull()).Returns(Shelters);
-
-            var result = _controller.GetAllShelters();
-
-            // uncomment this obviously wrong line, see what happens
-            // Assert.IsInstanceOf(typeof(NotFoundResult), result);
-
-            Assert.IsInstanceOf(typeof(OkObjectResult), result);
-            Assert.AreEqual(((OkObjectResult)result).Value, Shelters);
 
         }
 
+        // Testing on valid characters
+
         [Test]
-        public void Test_GetOneHappyFlow()
+        public void Test_ValidCharacters()
         {
-            var Shelter = new Shelter.Shared.Shelter()
-            {
-                Name = "abc"
-            };
-            _mockedDataAccess.Setup(x => x.GetShelterById(12)).Returns(Shelter);
 
-            var result = _controller.GetShelter(12);
-
-            Assert.IsInstanceOf(typeof(OkObjectResult), result);
-            Assert.AreEqual(((OkObjectResult)result).Value, Shelter);
         }
 
+        // Testing on unique id's 
         [Test]
-        public void Test_GetOneNotFound()
+        public void Test_UniqueId()
         {
-            _mockedDataAccess.Setup(x => x.GetShelterById(13)).Returns(default(Shelter.Shared.Shelter));
 
-            var result = _controller.GetShelter(13);
+        }
 
-            Assert.IsInstanceOf(typeof(NotFoundResult), result);
+        // Testing on id not found
+        [Test]
+        public void Test_IdNotFound()
+        {
+
         }
     }
 }
