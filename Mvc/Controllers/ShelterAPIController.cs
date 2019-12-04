@@ -54,7 +54,7 @@ namespace Mvc.Controllers
         [HttpGet("animals/update")]
         public ActionResult<Animal> UpdateAnimal(int animalId, string name)
         {
-            var targetAnimal = ShelterDatabase.Shelter.Animals.FirstOrDefault(x => x.Id == animalId);
+            var targetAnimal = Shelter.Animals.FirstOrDefault(x => x.Id == animalId);
             if (targetAnimal == default(Animal))
             {
                 return NotFound();
