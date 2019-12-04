@@ -1,7 +1,7 @@
 using NUnit.Framework;
-using Shelter.MVC.Controllers;
+using Mvc.Controllers;
 using Moq;
-using Shelter.MVC;
+using Mvc;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
