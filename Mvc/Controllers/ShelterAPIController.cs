@@ -52,7 +52,7 @@ namespace Mvc.Controllers
             var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
             return animal == default(Shelter.Shared.Animal) ? (IActionResult)NotFound() : Ok(animal);
         }
-        [HttpPost("{id}/animals/delete")]
+        [HttpDelete("{shelterId}/animals/{animalId}")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteAnimal(int animalId, int shelterId)
         {
