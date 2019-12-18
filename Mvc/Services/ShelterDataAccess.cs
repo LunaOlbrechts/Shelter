@@ -52,7 +52,6 @@ namespace Mvc
             var data = _context.Shelters
                 .Include(Shelter => Shelter.Animals)
                 .FirstOrDefault(x => x.Id == shelterId)?.Animals;
-
             Animal animal = _context.Animals.Find(animalId);
             _context.Animals.Remove(animal);
             _context.SaveChanges();
@@ -62,8 +61,9 @@ namespace Mvc
             var data = _context.Shelters
                 .Include(Shelter => Shelter.Animals)
                 .FirstOrDefault(x => x.Id == shelterId)?.Animals;
-
             Animal animal = _context.Animals.Find(animalId);
+            Animal a = new Animal();
+            animal.Name= a.Name;
             _context.SaveChanges();
         }
     }
