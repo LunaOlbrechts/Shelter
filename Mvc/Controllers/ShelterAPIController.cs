@@ -53,11 +53,10 @@ namespace Mvc.Controllers
             return animal == default(Shelter.Shared.Animal) ? (IActionResult)NotFound() : Ok(animal);
         }
         [HttpDelete("{shelterId}/animals/{animalId}")]
-        [ValidateAntiForgeryToken]
         public IActionResult DeleteAnimal(int animalId, int shelterId)
         {
             _dataAccess.DeleteAnimal(animalId, shelterId);
-            return RedirectToAction("Index");
+            return RedirectToAction("GetShelterAnimals");
         }
     }
 }
