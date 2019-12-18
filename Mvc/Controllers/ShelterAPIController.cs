@@ -56,9 +56,7 @@ namespace Mvc.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteAnimal(int animalId, int shelterId)
         {
-            Animal animal = _context.Animals.Find(animalId);
-            _context.Animals.Remove(animal);
-            _context.SaveChanges();
+            _dataAccess.DeleteAnimal(animalId, shelterId);
             return RedirectToAction("Index");
         }
     }

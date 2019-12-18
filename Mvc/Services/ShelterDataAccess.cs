@@ -46,8 +46,9 @@ namespace Mvc
         {
             return _context.Shelters.FirstOrDefault(x => x.Id == id);
         }
-        public IEnumerable<Animal> DeleteAnimal(int id, int shelterId)
+        public IEnumerable<Animal> DeleteAnimal(int animalId, int shelterId)
         {
+             Animal animal = _context.Animals.Find(animalId);
             return _context.Shelters
                 .Include(Shelter => Shelter.Animals)
                 .FirstOrDefault(x => x.Id == shelterId)?.Animals;

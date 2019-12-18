@@ -40,7 +40,7 @@ namespace Shelter.UnitTests
         [Test]
         public void Test_ValidCharacters()
         {
-            
+
         }
         // Testing on unique id's 
         [Test]
