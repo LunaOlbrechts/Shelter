@@ -11,7 +11,6 @@ namespace Mvc.Controllers
     [Route("/api/shelters")]
     public class ShelterAPIController : Controller
     {
-        private ShelterContext _context;
         private readonly IShelterDataAccess _dataAccess;
         private readonly ILogger<ShelterAPIController> _logger;
         public ShelterAPIController(ILogger<ShelterAPIController> logger, IShelterDataAccess dataAccess)
@@ -55,7 +54,7 @@ namespace Mvc.Controllers
         public IActionResult DeleteAnimal(int animalId, int shelterId)
         {
             _dataAccess.DeleteAnimal(animalId, shelterId);
-            return RedirectToAction("GetShelterAnimals");
+            return RedirectToAction("GetAllSheltersFull");
         }
     }
 }
