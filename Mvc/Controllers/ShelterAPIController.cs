@@ -61,7 +61,9 @@ namespace Mvc.Controllers
         public IActionResult UpdateAnimal(int animalId, int shelterId)
         {
             _dataAccess.UpdateAnimal(animalId, shelterId);
-            return RedirectToAction("GetAllSheltersFull");
+            var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
+            return animal == default(Shelter.Shared.Animal) ? (IActionResult)NotFound() : Ok(animal);
         }
+
     }
 }
