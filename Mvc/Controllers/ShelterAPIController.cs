@@ -14,11 +14,10 @@ namespace Mvc.Controllers
         private ShelterContext _context;
         private readonly IShelterDataAccess _dataAccess;
         private readonly ILogger<ShelterAPIController> _logger;
-        public ShelterAPIController(ILogger<ShelterAPIController> logger, IShelterDataAccess dataAccess, ShelterContext context)
+        public ShelterAPIController(ILogger<ShelterAPIController> logger, IShelterDataAccess dataAccess)
         {
             _dataAccess = dataAccess;
             _logger = logger;
-            _context = context;
         }
         [HttpGet("/")]
         public IActionResult GetAllShelters()

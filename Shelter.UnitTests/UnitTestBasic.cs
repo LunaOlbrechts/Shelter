@@ -21,7 +21,7 @@ namespace Shelter.UnitTests
             _mockedDataAccess = new Mock<IShelterDataAccess>(MockBehavior.Strict);
             _mockedLogger = new Mock<ILogger<ShelterAPIController>>(MockBehavior.Strict);
             _mockedContext = new Mock<ShelterContext>(MockBehavior.Strict);
-            _controller = new ShelterAPIController(_mockedLogger.Object, _mockedDataAccess.Object, _mockedContext.Object);
+            _controller = new ShelterAPIController(_mockedLogger.Object, _mockedDataAccess.Object);
         }
         [TearDown]
         public void TearDown()
