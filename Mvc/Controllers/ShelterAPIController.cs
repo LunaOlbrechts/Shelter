@@ -54,6 +54,13 @@ namespace Mvc.Controllers
         public IActionResult DeleteAnimal(int animalId, int shelterId)
         {
             _dataAccess.DeleteAnimal(animalId, shelterId);
+  
+            return RedirectToAction("GetAllSheltersFull");
+        }
+        [HttpPut("{shelterId}/animals/{animalId}")]
+        public IActionResult UpdateAnimal(int animalId, int shelterId)
+        {
+            _dataAccess.UpdateAnimal(animalId, shelterId);
             return RedirectToAction("GetAllSheltersFull");
         }
     }
