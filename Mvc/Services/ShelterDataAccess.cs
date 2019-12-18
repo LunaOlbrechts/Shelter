@@ -12,7 +12,7 @@ namespace Mvc
         Shelter.Shared.Shelters GetShelterById(int id);
         IEnumerable<Animal> GetAnimals(int animalId);
         Animal GetAnimalByShelterAndId(int shelterId, int animalId);
-        IEnumerable<Animal> DeleteAnimal(int id, int shelterId);
+        IEnumerable<Animal> DeleteAnimal(int animalId, int shelterId);
     }
     public class ShelterDataAccess : IShelterDataAccess
     {
@@ -48,7 +48,7 @@ namespace Mvc
         }
         public IEnumerable<Animal> DeleteAnimal(int animalId, int shelterId)
         {
-             Animal animal = _context.Animals.Find(animalId);
+            Animal animal = _context.Animals.Find(animalId);
             return _context.Shelters
                 .Include(Shelter => Shelter.Animals)
                 .FirstOrDefault(x => x.Id == shelterId)?.Animals;
