@@ -18,6 +18,7 @@ namespace Mvc.Controllers
             _dataAccess = dataAccess;
             _logger = logger;
         }
+
         [HttpGet("/")]
         public IActionResult GetAllShelters()
         {
@@ -32,23 +33,36 @@ namespace Mvc.Controllers
         [HttpGet("{id}")]
         public IActionResult GetShelter(int id)
         {
+
             // Either you find the shelter or not. If you don't find your resource return a 404 (as per https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)
-            var shelter = _dataAccess.GetShelterById(id); ;
-            return shelter == default(Shelter.Shared.Shelters) ? (IActionResult)NotFound() : Ok(shelter);
+            var shelter = _dataAccess.GetShelterById(id);
+            return shelter == default(Shelter.Shared.Shelters) ? (IActionResult)NotFound("404 the shelter is not found") : Ok(shelter);
         }
         [HttpGet("{id}/animals")]
         public IActionResult GetShelterAnimals(int id)
         {
             // if you don't find the shelter, return a 404. Again, an empty list is an empty list so empty list of animal is a valid result.
             var animals = _dataAccess.GetAnimals(id);
-            return animals == default(IEnumerable<Animal>) ? (IActionResult)NotFound() : Ok(animals);
+            return animals == default(IEnumerable<Animal>) ? (IActionResult)NotFound("404 the Shelter is not found") : Ok(animals);
         }
         [HttpGet("{shelterId}/animals/{animalId}")]
         public IActionResult GetAnimalDetails(int shelterId, int animalId)
         {
             // this can return two kinds of 404's; one for the non-existing shelter and one for the non-existing animal.
             var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
-            return animal == default(Shelter.Shared.Animal) ? (IActionResult)NotFound() : Ok(animal);
+            var shelter = _dataAccess.GetShelterById(shelterId);
+            if (shelter == null)
+            {
+                return NotFound("404 Shelter is not found");
+            }
+            if (animal == null)
+            {
+                return NotFound("404 Animal is not found");
+            }
+            else
+            {
+                return Ok(animal);
+            }
         }
         [HttpDelete("{shelterId}/animals/{animalId}")]
         public IActionResult DeleteAnimal(int animalId, int shelterId)
@@ -64,6 +78,5 @@ namespace Mvc.Controllers
             var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
             return animal == default(Shelter.Shared.Animal) ? (IActionResult)NotFound() : Ok(animal);
         }
-
     }
 }
