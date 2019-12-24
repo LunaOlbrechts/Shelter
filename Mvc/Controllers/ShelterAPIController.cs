@@ -33,7 +33,6 @@ namespace Mvc.Controllers
         [HttpGet("{id}")]
         public IActionResult GetShelter(int id)
         {
-
             // Either you find the shelter or not. If you don't find your resource return a 404 (as per https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)
             var shelter = _dataAccess.GetShelterById(id);
             return shelter == default(Shelter.Shared.Shelters) ? (IActionResult)NotFound("404 the shelter is not found") : Ok(shelter);
@@ -71,12 +70,21 @@ namespace Mvc.Controllers
 
             return RedirectToAction("GetAllSheltersFull");
         }
+
         [HttpPut("{shelterId}/animals/{animalId}")]
         public IActionResult UpdateAnimal(int animalId, int shelterId)
         {
-            _dataAccess.UpdateAnimal(animalId, shelterId);
             var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
-            return animal == default(Shelter.Shared.Animal) ? (IActionResult)NotFound() : Ok(animal);
+
+            _dataAccess.UpdateAnimal(animal, HttpContext.Request.Form);
+
+            return Ok(animal);
         }
+        /*
+            [HttpPut("{shelterId}/animals/{animalId}")]
+            public IActionResult CreateAnimal(int shelterId){
+                var shelter= 
+            }
+        */
     }
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Shelter.Shared;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace Mvc
 {
@@ -13,7 +14,7 @@ namespace Mvc
         IEnumerable<Animal> GetAnimals(int animalId);
         Animal GetAnimalByShelterAndId(int shelterId, int animalId);
         void DeleteAnimal(int animalId, int shelterId);
-        void UpdateAnimal(int animalId, int shelterId);
+        void UpdateAnimal(Animal animal, IFormCollection form);
     }
     public class ShelterDataAccess : IShelterDataAccess
     {
@@ -56,14 +57,11 @@ namespace Mvc
             _context.Animals.Remove(animal);
             _context.SaveChanges();
         }
-        public void UpdateAnimal(int animalId, int shelterId)
+        public void UpdateAnimal(Animal animal, IFormCollection form)
         {
-            var data = _context.Shelters
-                .Include(Shelter => Shelter.Animals)
-                .FirstOrDefault(x => x.Id == shelterId)?.Animals;
-            Animal animal = _context.Animals.Find(animalId);
-            Animal a = new Animal();
-            animal.Name= a.Name;
+            animal.Name = form["name"];
+            animal.Race = form["race"];
+            animal.KidFriendly = form["kid_friendly"] == "true";
             _context.SaveChanges();
         }
     }
