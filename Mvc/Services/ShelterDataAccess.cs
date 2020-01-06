@@ -15,6 +15,7 @@ namespace Mvc
         Animal GetAnimalByShelterAndId(int shelterId, int animalId);
         void DeleteAnimal(int animalId, int shelterId);
         void UpdateAnimal(Animal animal, IFormCollection form);
+        void CreateAnimal(Animal animal, IFormCollection form);
     }
     public class ShelterDataAccess : IShelterDataAccess
     {
@@ -58,6 +59,13 @@ namespace Mvc
             _context.SaveChanges();
         }
         public void UpdateAnimal(Animal animal, IFormCollection form)
+        {
+            animal.Name = form["name"];
+            animal.Race = form["race"];
+            animal.KidFriendly = form["kid_friendly"] == "true";
+            _context.SaveChanges();
+        }
+        public void CreateAnimal(Animal animal, IFormCollection form)
         {
             animal.Name = form["name"];
             animal.Race = form["race"];
