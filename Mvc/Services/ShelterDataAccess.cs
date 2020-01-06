@@ -66,10 +66,7 @@ namespace Mvc
             _context.SaveChanges();
         }
         public void CreateAnimal(Animal animal, IFormCollection form)
-        {
-            animal.Name = form["name"];
-            animal.Race = form["race"];
-            animal.KidFriendly = form["kid_friendly"] == "true";
+        {  
             _context.Add(animal);
             _context.SaveChanges();
         }

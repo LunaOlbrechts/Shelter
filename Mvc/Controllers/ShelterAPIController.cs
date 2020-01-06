@@ -94,7 +94,7 @@ namespace Mvc.Controllers
             }
         }
 
-        [HttpPost("{shelterId}/animals/{animalId}")]
+        [HttpPost("{shelterId}/animals")]
         public IActionResult CreateAnimal(int shelterId, int animalId)
         {
             var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
@@ -105,7 +105,7 @@ namespace Mvc.Controllers
             }
             else
             {
-                _dataAccess.UpdateAnimal(animal, HttpContext.Request.Form);
+                _dataAccess.CreateAnimal(animal, HttpContext.Request.Form);
                 return Ok(animal);
             }
         }
