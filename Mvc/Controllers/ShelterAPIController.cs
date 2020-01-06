@@ -36,15 +36,16 @@ namespace Mvc.Controllers
         {
             // find shelter in database if the shelter does not excist trow 404 Not found
             var shelter = _dataAccess.GetShelterById(id);
-           
-            if (shelter == null )
+
+            if (shelter == null)
             {
                 return NotFound("404 shelter is not found");
             }
-            else{
+            else
+            {
                 return Ok(shelter);
             }
-            
+
         }
         [HttpGet("{id}/animals")]
         public IActionResult GetShelterAnimals(int id)
@@ -59,7 +60,7 @@ namespace Mvc.Controllers
             // this can return two kinds of 404's; one for the non-existing shelter and one for the non-existing animal.
             var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
             var shelter = _dataAccess.GetShelterById(shelterId);
-            if (animal == null || shelter == null )
+            if (animal == null || shelter == null)
             {
                 return NotFound("404 shelter or/and animal are not found");
             }
@@ -82,7 +83,7 @@ namespace Mvc.Controllers
             var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
             var shelter = _dataAccess.GetShelterById(shelterId);
 
-            if (animal == null || shelter == null )
+            if (animal == null || shelter == null)
             {
                 return NotFound("404 shelter or/and animal are not found");
             }
@@ -92,16 +93,21 @@ namespace Mvc.Controllers
                 return Ok(animal);
             }
         }
-        /*
-            [HttpPut("{shelterId}/animals/{animalId}")]
-            public IActionResult CreateAnimal(int shelterId, int animalId)
+
+        [HttpPost("{shelterId}/animals/{animalId}")]
+        public IActionResult CreateAnimal(int shelterId, int animalId)
+        {
+            var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
+            var shelter = _dataAccess.GetShelterById(shelterId);
+            if (shelter == null)
             {
-                var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
-
+                return NotFound("404 shelter is not found");
+            }
+            else
+            {
                 _dataAccess.UpdateAnimal(animal, HttpContext.Request.Form);
-
                 return Ok(animal);
             }
-    */
+        }
     }
 }

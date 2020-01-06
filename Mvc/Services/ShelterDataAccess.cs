@@ -70,6 +70,7 @@ namespace Mvc
             animal.Name = form["name"];
             animal.Race = form["race"];
             animal.KidFriendly = form["kid_friendly"] == "true";
+            _context.Add(animal);
             _context.SaveChanges();
         }
     }
