@@ -6,6 +6,8 @@ using Shelter.Shared;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using System.Net.Http;
+using System.Web;
 
 namespace Mvc.Controllers
 {
@@ -93,19 +95,24 @@ namespace Mvc.Controllers
             }
         }
         [HttpPost("{shelterId}/animals")]
-        public IActionResult CreateAnimal(int shelterId, int animalId)
+        public IActionResult CreateAnimal(int shelterId)
         {
-            var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
             var shelter = _dataAccess.GetShelterById(shelterId);
             if (shelter == null)
             {
                 return NotFound("404 shelter is not found");
             }
-            else
+
+            var form = HttpContext.Request.Form;
+
+            if ((string)form["Name"] == null)
             {
-                _dataAccess.CreateAnimal(animal, HttpContext.Request.Form);
-                return Ok(animal);
+                return StatusCode(422);
             }
+
+            var newAnimal = _dataAccess.CreateAnimal(shelterId, HttpContext.Request.Form);
+            return Ok(newAnimal);
+
         }
     }
 }
