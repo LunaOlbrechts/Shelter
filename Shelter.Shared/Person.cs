@@ -13,6 +13,7 @@ namespace Shelter.Shared
     }
     public class Employee : Person
     {
+        
     }
     public class Caretaker : Employee
     {
@@ -20,8 +21,10 @@ namespace Shelter.Shared
     }
     public class Administrator : Employee
     {
+
     }
     public class Owner : Employee
     {
+
     }
 }

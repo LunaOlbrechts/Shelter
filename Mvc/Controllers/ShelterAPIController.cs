@@ -76,7 +76,6 @@ namespace Mvc.Controllers
 
             return RedirectToAction("GetAllSheltersFull");
         }
-
         [HttpPut("{shelterId}/animals/{animalId}")]
         public IActionResult UpdateAnimal(int animalId, int shelterId)
         {
@@ -93,7 +92,6 @@ namespace Mvc.Controllers
                 return Ok(animal);
             }
         }
-
         [HttpPost("{shelterId}/animals")]
         public IActionResult CreateAnimal(int shelterId, int animalId)
         {
