@@ -63,7 +63,7 @@ namespace Mvc
             animal.Name = form["name"];
             animal.Race = form["race"];
             animal.KidFriendly = form["kid_friendly"] == "true";
-            newAnimal.SheltersId = shelterId;
+            animal.SheltersId = shelterId;
             _context.SaveChanges();
         }
         public Animal CreateAnimal(int shelterId, IFormCollection form)
