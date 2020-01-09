@@ -34,7 +34,14 @@ namespace Shelter.UnitTests
         [Test]
         public void Test_Empty()
         {
-
+            var newAnimal = new Shelter.Shared.Animal()
+            {
+                Name = "Bob",
+                Race = "Yorkshire",
+                KidFriendly = true
+            };
+            Assert.IsNotEmpty(newAnimal.Name);
+            Assert.IsNotEmpty(newAnimal.Race);
         }
         // Testing on valid characters
         [Test]
@@ -46,13 +53,7 @@ namespace Shelter.UnitTests
         [Test]
         public void Test_UniqueId()
         {
-            var newAnimal = new Shelter.Shared.Animal()
-            {
-                Name = "Bob",
-                Race = "Yorkshire",
-                KidFriendly = true
-            };
-            // _mockedDataAccess.Setup(x => x.GetAnimals(1)).Returns(newAnimal);
+
         }
         // Testing on getting all shelters
         [Test]
