@@ -6,6 +6,7 @@ using GraphQL;
 using Microsoft.AspNetCore.Mvc;
 using Mvc;
 
+
 namespace Mvc.Controllers
 {
     [Route("graphql")]

@@ -27,14 +27,19 @@ namespace Mvc
             return null;
         }
         [GraphQLMetadata("animals")]
-        public IEnumerable<Shelter.Shared.Shelters> GetShelterAnimals(int id)
+        public IEnumerable<Shelter.Shared.Shelters> GetShelterAnimals()
         {
-            return null;
+            return animal.GetShelterAnimals();
         }
         [GraphQLMetadata("animal")]
         public IEnumerable<Shelter.Shared.Animal> GetAnimalDetails(int shelterId, int animalId)
         {
             return null;
+        }
+        [GraphQLMetadata("hello")]
+        public string GetHello()
+        {
+            return "Hello Query class";
         }
     }
 }
