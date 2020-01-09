@@ -1,42 +1,92 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Shelter.Shared;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using GraphQL;
-using GraphQL.Types;
 
-namespace Mvc
+namespace graphql_ef
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
-            //Declaring the schema. 
-            var schema = Schema.For(@"
-            type Query {
-                hello: String
-            }
-            ");
-            // Resolving the query. It maps something inside the query. If the user asks for Hello, the answer will be "Hello world".
-            var root = new { Hello = "Hello World!" };
-            // Executing the query
-            var json = schema.Execute(_ =>
+            IWebHost host = CreateWebHostBuilder(args).Build();
+
+            using (var db = new StoreContext())
             {
-                _.Query = "{ hello }";
-                _.Root = root;
-            });
-            Console.WriteLine(json);
-        }
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+                var authorDbEntry = db.Authors.Add(
+                    new Author
+                    {
+                        Name = "Stephen King",
+                    }
+                );
+
+                db.SaveChanges();
+
+                db.Books.AddRange(
+                new Book
                 {
-                    webBuilder.UseStartup<Startup>();
-                });
+                    Name = "IT",
+                    Published = true,
+                    AuthorId = authorDbEntry.Entity.Id,
+                    Genre = "Mystery"
+                },
+                new Book
+                {
+                    Name = "The Langoleers",
+                    Published = true,
+                    AuthorId = authorDbEntry.Entity.Id,
+                    Genre = "Mystery"
+                }
+                );
+
+                db.SaveChanges();
+            }
+
+            host.Run();
+
+
+            // using (IServiceScope scope = host.Services.CreateScope())
+            // {
+            //     ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+            //     var authorDbEntry = context.Authors.Add(
+            //         new Author
+            //         {
+            //             Name = "First Author",
+            //         }
+            //     );
+
+            //     context.SaveChanges();
+
+            //     context.Books.AddRange(
+            //     new Book
+            //     {
+            //         Name = "First Book",
+            //         Published = true,
+            //         AuthorId = authorDbEntry.Entity.Id,
+            //         Genre = "Mystery"
+            //     },
+            //     new Book
+            //     {
+            //         Name = "Second Book",
+            //         Published = true,
+            //         AuthorId = authorDbEntry.Entity.Id,
+            //         Genre = "Crime"
+            //     }
+            //     );
+            // }
+            // host.Run();
+        }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
     }
 }
