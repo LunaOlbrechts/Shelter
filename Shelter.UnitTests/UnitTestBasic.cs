@@ -46,7 +46,40 @@ namespace Shelter.UnitTests
         [Test]
         public void Test_UniqueId()
         {
-
+            var newAnimal = new Shelter.Shared.Animal()
+            {
+                Name = "Bob",
+                Race = "Yorkshire",
+                KidFriendly = true
+            };
+            // _mockedDataAccess.Setup(x => x.GetAnimals(1)).Returns(newAnimal);
+        }
+        // Testing on getting all shelters
+        [Test]
+        public void Test_GetAllShelters()
+        {
+            var shelters = new List<Shelter.Shared.Shelters>();
+            _mockedDataAccess.Setup(x => x.GetAllShelters()).Returns(shelters);
+            // uncomment the next line, run the test, read the exception message.
+            // mockedDataAccess.Setup(x => x.GetAllSheltersFull()).Returns(shelters);
+            var result = _controller.GetAllShelters();
+            // uncomment this obviously wrong line, see what happens
+            // Assert.IsInstanceOf(typeof(NotFoundResult), result);
+            Assert.IsInstanceOf(typeof(OkObjectResult), result);
+            Assert.AreEqual(((OkObjectResult)result).Value, shelters);
+        }
+        // Testing on adding new shelter
+        [Test]
+        public void Test_AddShelter()
+        {
+            var shelter = new Shelter.Shared.Shelters()
+            {
+                Name = "Abc"
+            };
+            _mockedDataAccess.Setup(x => x.GetShelterById(12)).Returns(shelter);
+            var result = _controller.GetShelter(12);
+            Assert.IsInstanceOf(typeof(OkObjectResult), result);
+            Assert.AreEqual(((OkObjectResult)result).Value, shelter);
         }
         // Testing on id not found
         [Test]

@@ -72,10 +72,8 @@ namespace Mvc
             newAnimal.Race = form["race"];
             newAnimal.KidFriendly = form["kid_friendly"] == "true";
             newAnimal.SheltersId = shelterId;
-
             _context.Add(newAnimal);
             _context.SaveChanges();
-            
             return newAnimal;
         }
     }

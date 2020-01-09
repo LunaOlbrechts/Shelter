@@ -22,12 +22,12 @@ namespace Mvc
           }
           ");
             var root = new { Hello = "Hello World!" };
-            var json = schema.Execute(_ =>
+            /*var json = schema.Execute(_ =>
             {
                 _.Query = "{ hello }";
                 _.Root = root;
             });
-            Console.WriteLine(json);
+            Console.WriteLine(json);*/
         }
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
