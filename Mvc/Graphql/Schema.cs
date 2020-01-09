@@ -1,6 +1,6 @@
 using GraphQL.Types;
 using GraphQL;
-
+using Shelter.Shared;
 
 namespace Mvc.Graphql
 {
