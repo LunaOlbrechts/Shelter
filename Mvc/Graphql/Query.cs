@@ -29,7 +29,7 @@ namespace Mvc
         [GraphQLMetadata("animals")]
         public IEnumerable<Shelter.Shared.Shelters> GetShelterAnimals()
         {
-            return animal.GetShelterAnimals();
+            return null;
         }
         [GraphQLMetadata("animal")]
         public IEnumerable<Shelter.Shared.Animal> GetAnimalDetails(int shelterId, int animalId)
