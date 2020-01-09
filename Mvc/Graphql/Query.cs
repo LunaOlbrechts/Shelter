@@ -4,7 +4,6 @@ using System.Linq;
 using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Shelter.Shared;
 
 
 namespace Mvc
@@ -14,14 +13,14 @@ namespace Mvc
         [GraphQLMetadata("shelters")]
         public IEnumerable<Shelter.Shared.Shelters> GetAllShelters()
         {
-            return Enumerable.Empty<Shelters>();
+            return Enumerable.Empty<Shelter.Shared.Shelters>();
         }
 
         [GraphQLMetadata("sheltersFull")]
         public IEnumerable<Shelter.Shared.Shelters> GetAllSheltersFull()
         {
             // You return a list here, "not found" is not an issue -- an empty list is still a valid list.
-            return Enumerable.Empty<Shelters>();
+            return Enumerable.Empty<Shelter.Shared.Shelters>();
         }
 
         [GraphQLMetadata("idShelter")]
@@ -31,13 +30,13 @@ namespace Mvc
         }
 
         [GraphQLMetadata("animals")]
-        public IEnumerable<Animal> GetShelterAnimals(int id)
+        public IEnumerable<Shelter.Shared.Shelters> GetShelterAnimals(int id)
         {
             return null;
         }
 
         [GraphQLMetadata("animal")]
-        public IEnumerable<Animal> GetAnimalDetails(int shelterId, int animalId)
+        public IEnumerable<Shelter.Shared.Animal> GetAnimalDetails(int shelterId, int animalId)
         {
             return null;
         }
