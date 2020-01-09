@@ -82,7 +82,6 @@ namespace Mvc.Controllers
             }
 
             _dataAccess.DeleteAnimal(animalId, shelterId);
-
             return Ok(shelter);
         }
 
@@ -106,7 +105,7 @@ namespace Mvc.Controllers
         {
             var form = HttpContext.Request.Form;
             var shelter = _dataAccess.GetShelterById(shelterId);
-            
+
             if (shelter == null)
             {
                 return NotFound("404 shelter is not found");
