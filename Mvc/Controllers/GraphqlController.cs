@@ -1,32 +1,37 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Shelter.Shared;
+using Api.Graphql;
 using GraphQL;
 using Microsoft.AspNetCore.Mvc;
-using Mvc.Graphql;
 
-
-[Route("graphql")]
-[ApiController]
-public class GraphqlController : ControllerBase
+namespace graphql_ef.Controllers
 {
-    [HttpPost]
-    public async Task<ActionResult> Post([FromBody] GraphQLQuery query)
+    [Route("graphql")]
+    [ApiController]
+    public class GraphqlController : ControllerBase
     {
-        var schema = new MySchema();
-        var inputs = query.Variables.ToInputs();
-
-        var result = await new DocumentExecuter().ExecuteAsync(_ =>
+        [HttpPost]
+        public async Task<ActionResult> Post([FromBody] GraphQLQuery query)
         {
-            _.Schema = schema.GraphQLSchema;
-            _.Query = query.Query;
-            _.OperationName = query.OperationName;
-            _.Inputs = inputs;
-        });
+            var schema = new MySchema();
+            var inputs = query.Variables.ToInputs();
 
-        if (result.Errors?.Count > 0)
-        {
-            return BadRequest();
+            var result = await new DocumentExecuter().ExecuteAsync(_ =>
+            {
+                _.Schema = schema.GraphQLSchema;
+                _.Query = query.Query;
+                _.OperationName = query.OperationName;
+                _.Inputs = inputs;
+            });
+
+            if (result.Errors?.Count > 0)
+            {
+                return BadRequest();
+            }
+
+            return Ok(result);
         }
-
-        return Ok(result);
     }
 }
