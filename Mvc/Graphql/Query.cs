@@ -1,63 +1,45 @@
 using System.Collections.Generic;
 using GraphQL;
 using System.Linq;
-using Api.Database;
 using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Shelter.Shared;
 
 
-namespace Mvc.Graphql
+namespace Mvc
 {
     public class Query
     {
-
         [GraphQLMetadata("shelters")]
-        public IActionResult GetAllShelters()
+        public IEnumerable<Shelter.Shared.Shelters> GetAllShelters()
         {
-            return Ok(_dataAccess.GetAllShelters());
+            return Enumerable.Empty<Shelters>();
         }
 
         [GraphQLMetadata("sheltersFull")]
-        public IActionResult GetAllSheltersFull()
+        public IEnumerable<Shelter.Shared.Shelters> GetAllSheltersFull()
         {
             // You return a list here, "not found" is not an issue -- an empty list is still a valid list.
-            return Ok(_dataAccess.GetAllSheltersFull());
+            return Enumerable.Empty<Shelters>();
         }
 
         [GraphQLMetadata("idShelter")]
-        public IActionResult GetShelter(int id)
+        public Shelter.Shared.Shelters GetShelter(int id)
         {
-            // find shelter in database if the shelter does not excist trow 404 Not found
-            var shelter = _dataAccess.GetShelterById(id);
-
-            if (shelter == null)
-            {
-                return NotFound("404 shelter is not found");
-            }
-            return Ok(shelter);
+            return null;
         }
 
         [GraphQLMetadata("animals")]
-        public IActionResult GetShelterAnimals(int id)
+        public IEnumerable<Animal> GetShelterAnimals(int id)
         {
-            // if you don't find the shelter, return a 404. Again, an empty list is an empty list so empty list of animal is a valid result.
-            var animals = _dataAccess.GetAnimals(id);
-            return animals == default(IEnumerable<Animal>) ? (IActionResult)NotFound("404 the Shelter is not found") : Ok(animals);
+            return null;
         }
 
-         [GraphQLMetadata("animal")]
-         public IActionResult GetAnimalDetails(int shelterId, int animalId)
+        [GraphQLMetadata("animal")]
+        public IEnumerable<Animal> GetAnimalDetails(int shelterId, int animalId)
         {
-            var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
-            var shelter = _dataAccess.GetShelterById(shelterId);
-
-            if (animal == null || shelter == null)
-            {
-                return NotFound("404 shelter or/and animal are not found");
-            }
-            return Ok(animal);
+            return null;
         }
     }
 }

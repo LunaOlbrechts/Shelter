@@ -1,6 +1,6 @@
 using GraphQL.Types;
 using GraphQL;
-using Api.Database;
+
 
 namespace Mvc.Graphql
 {
