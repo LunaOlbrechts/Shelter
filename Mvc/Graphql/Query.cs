@@ -5,20 +5,22 @@ using Api.Database;
 using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Shelter.Shared;
+
 
 namespace Mvc.Graphql 
 {
   public class Query
   {
 
-    [GraphQLMetadata("books")]
-    public IEnumerable<Book> GetBooks()
+    [GraphQLMetadata("animals")]
+    public IEnumerable<Animal> GetAnimals()
     {
       return Enumerable.Empty<Books>();
     }
 
-    [GraphQLMetadata("authors")]
-    public IEnumerable<Author> GetAuthors() 
+    [GraphQLMetadata("shelters")]
+    public IEnumerable<Shelters> GetShelters() 
     {
       return Enumerable.Empty<Authors>();
     }
@@ -27,12 +29,6 @@ namespace Mvc.Graphql
     public Author GetAuthor(int id)
     {
       return null;
-    }
-
-    [GraphQLMetadata("hello")]
-    public string GetHello()
-    {
-      return "World";
     }
   }
 }

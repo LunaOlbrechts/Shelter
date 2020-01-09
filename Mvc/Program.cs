@@ -17,14 +17,16 @@ namespace Mvc
         {
             CreateHostBuilder(args).Build().Run();
 
-            Console.WriteLine("Hello World!");
+            //Declaring the schema. 
             var schema = Schema.For(@"
             type Query {
                 hello: String
             }
             ");
 
+            // Resolving the query. It maps something inside the query. If the user asks for Hello, the answer will be "Hello world".
             var root = new { Hello = "Hello World!" };
+            // Executing the query
             var json = schema.Execute(_ =>
             {
                 _.Query = "{ hello }";
