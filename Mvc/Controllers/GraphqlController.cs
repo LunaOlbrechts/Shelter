@@ -3,6 +3,7 @@ using GraphQL;
 using Microsoft.AspNetCore.Mvc;
 using Mvc.Graphql;
 
+
 [Route("graphql")]
 [ApiController]
 public class GraphqlController : ControllerBase

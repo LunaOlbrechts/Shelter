@@ -4,7 +4,6 @@ using System.Linq;
 using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Shelter.Shared;
 
 
 namespace Mvc
