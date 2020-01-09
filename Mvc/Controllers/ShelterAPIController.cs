@@ -21,20 +21,17 @@ namespace Mvc.Controllers
             _dataAccess = dataAccess;
             _logger = logger;
         }
-
         [HttpGet("/")]
         public IActionResult GetAllShelters()
         {
             return Ok(_dataAccess.GetAllShelters());
         }
-
         [HttpGet("full")]
         public IActionResult GetAllSheltersFull()
         {
             // You return a list here, "not found" is not an issue -- an empty list is still a valid list.
             return Ok(_dataAccess.GetAllSheltersFull());
         }
-
         [HttpGet("{id}")]
         public IActionResult GetShelter(int id)
         {
@@ -47,7 +44,6 @@ namespace Mvc.Controllers
             }
             return Ok(shelter);
         }
-
         [HttpGet("{id}/animals")]
         public IActionResult GetShelterAnimals(int id)
         {
@@ -55,7 +51,6 @@ namespace Mvc.Controllers
             var animals = _dataAccess.GetAnimals(id);
             return animals == default(IEnumerable<Animal>) ? (IActionResult)NotFound("404 the Shelter is not found") : Ok(animals);
         }
-
         [HttpGet("{shelterId}/animals/{animalId}")]
         public IActionResult GetAnimalDetails(int shelterId, int animalId)
         {
@@ -66,10 +61,8 @@ namespace Mvc.Controllers
             {
                 return NotFound("404 shelter or/and animal are not found");
             }
-
             return Ok(animal);
         }
-
         [HttpDelete("{shelterId}/animals/{animalId}")]
         public IActionResult DeleteAnimal(int animalId, int shelterId)
         {
@@ -80,32 +73,26 @@ namespace Mvc.Controllers
             {
                 return NotFound("404 animal and/ or schelter are not found");
             }
-
             _dataAccess.DeleteAnimal(animalId, shelterId);
             return Ok(shelter);
         }
-
         [HttpPut("{shelterId}/animals/{animalId}")]
         public IActionResult UpdateAnimal(int animalId, int shelterId)
         {
             var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
             var shelter = _dataAccess.GetShelterById(shelterId);
-
             if (animal == null || shelter == null)
             {
                 return NotFound("404 shelter or/and animal are not found");
             }
-
             _dataAccess.UpdateAnimal(animal, HttpContext.Request.Form);
             return Ok(animal);
         }
-
         [HttpPost("{shelterId}/animals")]
         public IActionResult CreateAnimal(int shelterId)
         {
             var form = HttpContext.Request.Form;
             var shelter = _dataAccess.GetShelterById(shelterId);
-
             if (shelter == null)
             {
                 return NotFound("404 shelter is not found");
@@ -114,7 +101,6 @@ namespace Mvc.Controllers
             {
                 return StatusCode(422);
             }
-
             var newAnimal = _dataAccess.CreateAnimal(shelterId, HttpContext.Request.Form);
             return Ok(newAnimal);
         }
