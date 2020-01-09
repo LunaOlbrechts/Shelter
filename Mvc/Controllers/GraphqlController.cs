@@ -4,7 +4,8 @@ using System.Threading.Tasks;
 using Shelter.Shared;
 using Api.Graphql;
 using GraphQL;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;.
+using Mvc.Graphql;
 
 namespace graphql_ef.Controllers
 {
