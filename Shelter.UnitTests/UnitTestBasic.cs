@@ -53,7 +53,15 @@ namespace Shelter.UnitTests
         [Test]
         public void Test_UniqueId()
         {
-
+            var shelter1 = new Shelter.Shared.Shelters()
+            {
+                Id = 1
+            };
+            var shelter2 = new Shelter.Shared.Shelters()
+            {
+                Id = 2
+            };
+            Assert.AreNotEqual(shelter1.Id, shelter2.Id);
         }
         // Testing on getting all shelters
         [Test]
@@ -61,8 +69,6 @@ namespace Shelter.UnitTests
         {
             var shelters = new List<Shelter.Shared.Shelters>();
             _mockedDataAccess.Setup(x => x.GetAllShelters()).Returns(shelters);
-            // uncomment the next line, run the test, read the exception message.
-            // mockedDataAccess.Setup(x => x.GetAllSheltersFull()).Returns(shelters);
             var result = _controller.GetAllShelters();
             // uncomment this obviously wrong line, see what happens
             // Assert.IsInstanceOf(typeof(NotFoundResult), result);
