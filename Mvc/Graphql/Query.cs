@@ -10,32 +10,6 @@ namespace Mvc
 {
     public class Query
     {
-        [GraphQLMetadata("shelters")]
-        public IEnumerable<Shelter.Shared.Shelters> GetAllShelters()
-        {
-            return Enumerable.Empty<Shelter.Shared.Shelters>();
-        }
-        [GraphQLMetadata("sheltersFull")]
-        public IEnumerable<Shelter.Shared.Shelters> GetAllSheltersFull()
-        {
-            // You return a list here, "not found" is not an issue -- an empty list is still a valid list.
-            return Enumerable.Empty<Shelter.Shared.Shelters>();
-        }
-        [GraphQLMetadata("idShelter")]
-        public Shelter.Shared.Shelters GetShelter(int id)
-        {
-            return null;
-        }
-        [GraphQLMetadata("animals")]
-        public IEnumerable<Shelter.Shared.Shelters> GetShelterAnimals()
-        {
-            return null;
-        }
-        [GraphQLMetadata("animal")]
-        public IEnumerable<Shelter.Shared.Animal> GetAnimalDetails(int shelterId, int animalId)
-        {
-            return null;
-        }
         [GraphQLMetadata("hello")]
         public string GetHello()
         {
