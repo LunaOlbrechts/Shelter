@@ -16,14 +16,12 @@ namespace Mvc
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
-
             //Declaring the schema. 
             var schema = Schema.For(@"
             type Query {
                 hello: String
             }
             ");
-
             // Resolving the query. It maps something inside the query. If the user asks for Hello, the answer will be "Hello world".
             var root = new { Hello = "Hello World!" };
             // Executing the query
@@ -32,7 +30,6 @@ namespace Mvc
                 _.Query = "{ hello }";
                 _.Root = root;
             });
-
             Console.WriteLine(json);
         }
         public static IHostBuilder CreateHostBuilder(string[] args) =>

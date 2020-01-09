@@ -1,7 +1,6 @@
 using GraphQL.Types;
 using GraphQL;
 
-
 namespace Mvc.Graphql
 {
     public class MySchema
@@ -14,7 +13,6 @@ namespace Mvc.Graphql
                 return this._schema;
             }
         }
-
         public MySchema()
         {
             this._schema = Schema.For(@"
@@ -22,13 +20,11 @@ namespace Mvc.Graphql
                     id: ID
                     name: String,
                 }
-
                 type Shelter {
                     id: ID,
                     name: String,
                     animals: [Animal]
                 }
-
                 type Query {
                     animals: [Animal]
                     shelters: [Shelter]
@@ -38,6 +34,5 @@ namespace Mvc.Graphql
                 _.Types.Include<Query>();
             });
         }
-
     }
 }
