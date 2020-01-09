@@ -6,7 +6,7 @@ namespace Api.Graphql
     [GraphQLMetadata("Mutation")]
     public class Mutation
     {
-        [GraphQLMetadata("addAuthor")]
+        /*[GraphQLMetadata("addAuthor")]
         public Author Add(string name)
         {
             using (var db = new StoreContext())
@@ -16,6 +16,6 @@ namespace Api.Graphql
                 db.SaveChanges();
                 return author;
             }
-        }
+        }*/
     }
 }

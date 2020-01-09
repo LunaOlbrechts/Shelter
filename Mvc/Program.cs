@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace graphql_ef
+namespace Mvc
 {
     public class Program
     {
@@ -18,37 +18,17 @@ namespace graphql_ef
         {
             IWebHost host = CreateWebHostBuilder(args).Build();
 
-            using (var db = new StoreContext())
+            using (var db = new ShelterContext())
             {
-                var authorDbEntry = db.Authors.Add(
-                    new Author
+                var animalName = db.Animals.Add(
+                    new Animal
                     {
-                        Name = "Stephen King",
+                        Name = "Koda King",
                     }
                 );
 
                 db.SaveChanges();
-
-                db.Books.AddRange(
-                new Book
-                {
-                    Name = "IT",
-                    Published = true,
-                    AuthorId = authorDbEntry.Entity.Id,
-                    Genre = "Mystery"
-                },
-                new Book
-                {
-                    Name = "The Langoleers",
-                    Published = true,
-                    AuthorId = authorDbEntry.Entity.Id,
-                    Genre = "Mystery"
-                }
-                );
-
-                db.SaveChanges();
             }
-
             host.Run();
 
 
