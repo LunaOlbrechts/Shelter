@@ -27,7 +27,7 @@ namespace Mvc
             return null;
         }
         [GraphQLMetadata("animals")]
-        public IEnumerable<Shelter.Shared.Shelters> GetShelterAnimals(int id)
+        public IEnumerable<Shelter.Shared.Shelters> GetShelterAnimals()
         {
             return null;
         }
@@ -35,6 +35,11 @@ namespace Mvc
         public IEnumerable<Shelter.Shared.Animal> GetAnimalDetails(int shelterId, int animalId)
         {
             return null;
+        }
+        [GraphQLMetadata("hello")]
+        public string GetHello()
+        {
+            return "Hello Query class";
         }
     }
 }
