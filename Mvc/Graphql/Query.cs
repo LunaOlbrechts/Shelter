@@ -31,7 +31,7 @@ namespace Mvc
         {
             return null;
         }
-        [GraphQLMetadata("animal")]
+        [GraphQLMetadata("animalDetail")]
         public IEnumerable<Shelter.Shared.Animal> GetAnimalDetails(int shelterId, int animalId)
         {
             return null;
