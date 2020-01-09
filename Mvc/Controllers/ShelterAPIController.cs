@@ -69,7 +69,6 @@ namespace Mvc.Controllers
         {
             var shelter = _dataAccess.GetShelterById(shelterId);
             var animal = _dataAccess.GetAnimalByShelterAndId(animalId, shelterId);
-
             if (shelter == null || animal == null)
             {
                 return NotFound("404 animal and/ or schelter are not found");

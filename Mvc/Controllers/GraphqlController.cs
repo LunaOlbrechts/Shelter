@@ -18,7 +18,6 @@ namespace Mvc.Controllers
         {
             var schema = new MySchema();
             var inputs = query.Variables.ToInputs();
-
             var result = await new DocumentExecuter().ExecuteAsync(_ =>
             {
                 _.Schema = schema.GraphQLSchema;
@@ -26,12 +25,10 @@ namespace Mvc.Controllers
                 _.OperationName = query.OperationName;
                 _.Inputs = inputs;
             });
-
             if (result.Errors?.Count > 0)
             {
                 return BadRequest();
             }
-
             return Ok(result);
         }
     }
