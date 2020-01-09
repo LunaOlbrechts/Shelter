@@ -12,7 +12,7 @@ namespace App
             var schema = Schema.For(@"
           type Query {
               hello: String
-          }
+          } 
           ");
 
             var root = new { Hello = "Hello World!" };
