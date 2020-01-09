@@ -85,7 +85,7 @@ namespace Mvc.Controllers
             {
                 return NotFound("404 shelter or/and animal are not found");
             }
-            _dataAccess.UpdateAnimal(animal, HttpContext.Request.Form);
+            _dataAccess.UpdateAnimal(animal, shelter, HttpContext.Request.Form);
             return Ok(animal);
         }
         [HttpPost("{shelterId}/animals")]
