@@ -33,7 +33,6 @@ namespace Mvc
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDatabaseInitializer databaseInitializer)
         {
-            app.UseGraphiQl();
 
             if (env.IsDevelopment())
             {
@@ -55,6 +54,7 @@ namespace Mvc
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthorization();
+            app.UseGraphiQl();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

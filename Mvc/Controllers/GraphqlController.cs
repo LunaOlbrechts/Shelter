@@ -2,12 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Shelter.Shared;
-using Api.Graphql;
 using GraphQL;
 using Microsoft.AspNetCore.Mvc;
-using Mvc.Graphql;
+using Mvc;
 
-namespace graphql_ef.Controllers
+namespace Mvc.Controllers
 {
     [Route("graphql")]
     [ApiController]

@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Shelter.Shared;
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using GraphQL;
+using GraphQL.Types;
 
 namespace Mvc
 {
@@ -16,57 +15,26 @@ namespace Mvc
     {
         public static void Main(string[] args)
         {
-            IWebHost host = CreateWebHostBuilder(args).Build();
-
-            using (var db = new ShelterContext())
+            CreateHostBuilder(args).Build().Run();
+            var schema = Schema.For(@"
+                type Query {
+                 hello: String
+                }
+            ");
+            var root = new { Hello = "Hello World!" };
+            var json = schema.Execute(_ =>
             {
-                var animalName = db.Animals.Add(
-                    new Animal
-                    {
-                        Name = "Koda King",
-                    }
-                );
-
-                db.SaveChanges();
-            }
-            host.Run();
-
-
-            // using (IServiceScope scope = host.Services.CreateScope())
-            // {
-            //     ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-
-            //     var authorDbEntry = context.Authors.Add(
-            //         new Author
-            //         {
-            //             Name = "First Author",
-            //         }
-            //     );
-
-            //     context.SaveChanges();
-
-            //     context.Books.AddRange(
-            //     new Book
-            //     {
-            //         Name = "First Book",
-            //         Published = true,
-            //         AuthorId = authorDbEntry.Entity.Id,
-            //         Genre = "Mystery"
-            //     },
-            //     new Book
-            //     {
-            //         Name = "Second Book",
-            //         Published = true,
-            //         AuthorId = authorDbEntry.Entity.Id,
-            //         Genre = "Crime"
-            //     }
-            //     );
-            // }
-            // host.Run();
+                _.Query = "{ hello }";
+                _.Root = root;
+            });
+            Console.WriteLine(json);
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }

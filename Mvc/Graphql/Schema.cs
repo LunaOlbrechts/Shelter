@@ -2,7 +2,7 @@ using GraphQL.Types;
 using GraphQL;
 using Shelter.Shared;
 
-namespace Mvc.Graphql
+namespace Mvc
 {
     public class MySchema
     {

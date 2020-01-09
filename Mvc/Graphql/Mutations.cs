@@ -1,7 +1,7 @@
 using Shelter.Shared;
 using GraphQL;
 
-namespace Api.Graphql
+namespace Mvc
 {
     [GraphQLMetadata("Mutation")]
     public class Mutation
