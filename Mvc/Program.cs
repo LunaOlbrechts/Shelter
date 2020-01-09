@@ -19,10 +19,10 @@ namespace Mvc
 
             Console.WriteLine("Hello World!");
             var schema = Schema.For(@"
-          type Query {
-              hello: String
-          }
-          ");
+            type Query {
+                hello: String
+            }
+            ");
 
             var root = new { Hello = "Hello World!" };
             var json = schema.Execute(_ =>
