@@ -21,7 +21,6 @@ namespace Mvc
                     id: ID,
                     name: String
                 }
-
                 type Animal{
                     id: ID,
                     name: String

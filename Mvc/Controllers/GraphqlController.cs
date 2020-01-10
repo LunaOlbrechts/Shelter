@@ -8,7 +8,6 @@ using Mvc;
 using Newtonsoft.Json.Linq;
 using System;
 
-
 namespace Mvc.Controllers
 {
     [Route("graphql")]
@@ -28,7 +27,6 @@ namespace Mvc.Controllers
                 _.ExposeExceptions = true;
                 _.Inputs = inputs;
             });
-
             return Ok(result);
         }
     }

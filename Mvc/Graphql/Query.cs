@@ -10,7 +10,6 @@ using System.Net.Http;
 using System.Web;
 using Microsoft.AspNetCore.Http;
 
-
 namespace Mvc
 {
     public class Query
@@ -20,7 +19,6 @@ namespace Mvc
         {
             return "Hello Query class";
         }
-
         [GraphQLMetadata("shelters")]
         public IEnumerable<Shelter.Shared.Shelters> GetShelters()
         {
@@ -28,7 +26,6 @@ namespace Mvc
                  return _context.Shelters.ToList();
             }
         }
-
         [GraphQLMetadata("animals")]
         public IEnumerable<Animal> GetAnimals()
         {
