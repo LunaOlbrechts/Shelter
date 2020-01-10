@@ -11,6 +11,7 @@ using System.Web;
 
 namespace Mvc
 {
+
     public class Query
     {
 
@@ -20,13 +21,21 @@ namespace Mvc
             return "Hello Query class";
         }
 
-        [GraphQLMetadata("animals")]
-        public IEnumerable<Animal> GetAnimals()
+        [GraphQLMetadata("shelters")]
+        public IEnumerable<Shelter.Shared.Shelters> GetShelters()
         {
-            using (var db = new ShelterContext())
+            using (var db = new Shelter.Shared.ShelterContext())
+            {
+                return null;
+            }
+        }
+
+        [GraphQLMetadata("animals")]
+        public IEnumerable<Shelter.Shared.Animal> GetAnimals()
+        {
+            using (var db = new Shelter.Shared.ShelterContext())
             {
                 return db.Animals
-                .Include(b => b.Name)
                 .ToList();
             }
         }
