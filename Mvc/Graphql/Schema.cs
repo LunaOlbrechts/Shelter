@@ -20,11 +20,9 @@ namespace Mvc
                 type Shelters {
                     name: String
                 }
-
                 type Animals{
                     name: String
                 }
-          
                 type Query{
                     shelters: [Shelters]
                     animals: [Animals]

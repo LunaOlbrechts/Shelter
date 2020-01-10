@@ -37,7 +37,6 @@ namespace Mvc.Controllers
         {
             // find shelter in database if the shelter does not excist trow 404 Not found
             var shelter = _dataAccess.GetShelterById(id);
-
             if (shelter == null)
             {
                 return NotFound("404 shelter is not found");
@@ -56,7 +55,6 @@ namespace Mvc.Controllers
         {
             var animal = _dataAccess.GetAnimalByShelterAndId(shelterId, animalId);
             var shelter = _dataAccess.GetShelterById(shelterId);
-
             if (animal == null || shelter == null)
             {
                 return NotFound("404 shelter or/and animal are not found");
