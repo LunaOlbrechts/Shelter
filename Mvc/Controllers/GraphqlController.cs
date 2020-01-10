@@ -5,6 +5,7 @@ using Shelter.Shared;
 using GraphQL;
 using Microsoft.AspNetCore.Mvc;
 using Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace Mvc.Controllers
 {
@@ -30,5 +31,12 @@ namespace Mvc.Controllers
             }
             return Ok(result);
         }
+    }
+    public class GraphQLQuery
+    {
+        public string OperationName { get; set; }
+        public string NamedQuery { get; set; }
+        public string Query { get; set; }
+        public JObject Variables { get; set; }
     }
 }
