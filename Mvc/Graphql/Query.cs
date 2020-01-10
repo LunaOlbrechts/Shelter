@@ -13,7 +13,7 @@ namespace Mvc
 {
     public class Query
     {
-     
+
 
         [GraphQLMetadata("hello")]
         public string GetHello()
@@ -21,7 +21,18 @@ namespace Mvc
             return "Hello Query class";
         }
 
+        [GraphQLMetadata("animals")]
+        public IEnumerable<Animal> GetAnimals()
+        {
+            using (var db = new ShelterContext())
+            {
+                return db.Animals
+                .Include(b => b.Name)
+                .ToList();
+            }
+        }
 
-     
+
+
     }
 }
