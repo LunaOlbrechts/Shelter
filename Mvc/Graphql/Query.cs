@@ -14,7 +14,6 @@ namespace Mvc
     public class Query
     {
 
-
         [GraphQLMetadata("hello")]
         public string GetHello()
         {
