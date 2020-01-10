@@ -24,10 +24,8 @@ namespace Mvc
         [GraphQLMetadata("shelters")]
         public IEnumerable<Shelter.Shared.Shelters> GetShelters()
         {
-            using (var db = new Shelter.Shared.ShelterContext())
-            {
-                return null;
-            }
+            var _context = new Shelter.Shared.ShelterContext();
+            return _context.Shelters.ToList();
         }
 
         [GraphQLMetadata("animals")]
@@ -35,7 +33,7 @@ namespace Mvc
         {
             using (var db = new Shelter.Shared.ShelterContext())
             {
-                return null;
+                return db.Animals.ToList();
             }
         }
 
