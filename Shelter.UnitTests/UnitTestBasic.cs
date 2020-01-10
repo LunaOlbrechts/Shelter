@@ -43,12 +43,6 @@ namespace Shelter.UnitTests
             Assert.IsNotEmpty(newAnimal.Name);
             Assert.IsNotEmpty(newAnimal.Race);
         }
-        // Testing on valid characters
-        [Test]
-        public void Test_ValidCharacters()
-        {
-
-        }
         // Testing on unique id's 
         [Test]
         public void Test_UniqueId()
