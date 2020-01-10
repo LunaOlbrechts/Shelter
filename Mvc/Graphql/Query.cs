@@ -26,7 +26,7 @@ namespace Mvc
         {
             using (var db = new Shelter.Shared.ShelterContext())
             {
-                return db.Shelters.ToList();
+                return null;
             }
         }
 
@@ -35,10 +35,9 @@ namespace Mvc
         {
             using (var db = new Shelter.Shared.ShelterContext())
             {
-                return db.Animals.ToList();
+                return null;
             }
         }
-
 
 
     }
