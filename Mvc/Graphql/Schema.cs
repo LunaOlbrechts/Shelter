@@ -17,17 +17,19 @@ namespace Mvc
         public MySchema()
         {
             this._schema = Schema.For(@"
-                type Shelters {
+                type Shelter {
+                    id: ID,
                     name: String
                 }
 
-                type Animals{
+                type Animal{
+                    id: ID,
                     name: String
                 }
           
                 type Query{
-                    shelters: [Shelters]
-                    animals: [Animals]
+                    shelters: [Shelter]
+                    animals: [Animal]
                     hello: String
                 }
                 ", _ =>

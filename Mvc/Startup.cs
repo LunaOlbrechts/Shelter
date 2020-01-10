@@ -25,17 +25,7 @@ namespace Mvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
-            {
-                options.AddPolicy(MyAllowSpecificOrigins,
-                builder =>
-                {
-                    builder.WithOrigins("http://example.com",
-                                        "http://www.contoso.com")
-                                        .AllowAnyHeader()
-                                        .AllowAnyMethod();
-                });
-            });
+            services.AddMvc().AddNewtonsoftJson();
             services.AddControllersWithViews();
             services.AddDbContext<ShelterContext>(options => options.UseSqlite(Configuration.GetConnectionString("ShelterContext")));
             services.AddScoped<IDatabaseInitializer, DatabaseInitializer>();
@@ -66,7 +56,7 @@ namespace Mvc
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthorization();
-            app.UseCors(MyAllowSpecificOrigins); 
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

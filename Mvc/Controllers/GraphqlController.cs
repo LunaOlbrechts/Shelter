@@ -6,6 +6,8 @@ using GraphQL;
 using Microsoft.AspNetCore.Mvc;
 using Mvc;
 using Newtonsoft.Json.Linq;
+using System;
+
 
 namespace Mvc.Controllers
 {
@@ -23,12 +25,10 @@ namespace Mvc.Controllers
                 _.Schema = schema.GraphQLSchema;
                 _.Query = query.Query;
                 _.OperationName = query.OperationName;
+                _.ExposeExceptions = true;
                 _.Inputs = inputs;
             });
-            if (result.Errors?.Count > 0)
-            {
-                return BadRequest();
-            }
+
             return Ok(result);
         }
     }

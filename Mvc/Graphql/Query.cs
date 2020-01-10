@@ -8,6 +8,8 @@ using Shelter.Shared;
 using System.Data;
 using System.Net.Http;
 using System.Web;
+using Microsoft.AspNetCore.Http;
+
 
 namespace Mvc
 {
@@ -18,18 +20,20 @@ namespace Mvc
         {
             return "Hello Query class";
         }
+
         [GraphQLMetadata("shelters")]
         public IEnumerable<Shelter.Shared.Shelters> GetShelters()
         {
-            var _context = new Shelter.Shared.ShelterContext();
-            return _context.Shelters.ToList();
+            using(var _context= new ShelterContext()){
+                 return _context.Shelters.ToList();
+            }
         }
+
         [GraphQLMetadata("animals")]
-        public IEnumerable<Shelter.Shared.Animal> GetAnimals()
+        public IEnumerable<Animal> GetAnimals()
         {
-            using (var db = new Shelter.Shared.ShelterContext())
-            {
-                return db.Animals.ToList();
+            using(var _context= new ShelterContext()){
+                 return _context.Animals.ToList();
             }
         }
     }

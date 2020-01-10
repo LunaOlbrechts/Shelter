@@ -6,7 +6,7 @@ namespace Mvc
     [GraphQLMetadata("Mutation")]
     public class Mutation
     {
-        /*[GraphQLMetadata("addAuthor")]
+        /*[GraphQLMetadata("addAnimal")]
         public Author Add(string name)
         {
             using (var db = new StoreContext())
