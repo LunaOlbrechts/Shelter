@@ -46,7 +46,6 @@ namespace Shelter.Shared
                     new Dog() { Name = "Beatle", DateOfBirth = "06-10-2012", IsChecked = false, KidFriendly = true, Since = "15-10-2018", Race = "Beagle", Barker = true, SheltersId=1},
                 }
             };
-
             var Shelter2 = new Shelters()
             {
                 Name = "Dierenopvangcentrum Zemst",
