@@ -20,13 +20,14 @@ namespace Mvc
                 type Shelters {
                     name: String
                 }
+
                 type Animals{
                     name: String
                 }
-        
+          
                 type Query{
-                    shelter(Id: int!): Shelters
-                    animal(Id: int!): Animals
+                    shelters: [Shelters]
+                    animals: [Animals]
                     hello: String
                 }
                 ", _ =>
