@@ -19,15 +19,21 @@ namespace Mvc
             this._schema = Schema.For(@"
                 type Shelter {
                     id: ID,
-                    name: String
+                    name: String,
+                    adress: String,
+                    animals: [Animal]
                 }
 
                 type Animal{
                     id: ID,
-                    name: String
+                    name: String,
+                    race: String,
+                    sheltersId: ID,
+                    kidFriendly: String
                 }
                 type Query{
                     shelters: [Shelter]
+                    animal(id: ID): Animal,
                     animals: [Animal]
                     hello: String
                 }

@@ -25,7 +25,9 @@ namespace Mvc
         public IEnumerable<Shelter.Shared.Shelters> GetShelters()
         {
             using(var _context= new ShelterContext()){
-                 return _context.Shelters.ToList();
+                 return _context.Shelters
+                 .Include(x => x.Animals)
+                 .ToList();
             }
         }
 
@@ -34,6 +36,14 @@ namespace Mvc
         {
             using(var _context= new ShelterContext()){
                  return _context.Animals.ToList();
+            }
+        }
+
+        [GraphQLMetadata("animal")]
+        public Animal GetAnimal(int id)
+        {
+            using(var _context= new ShelterContext()){
+                 return _context.Animals.SingleOrDefault(a => a.Id == id);
             }
         }
     }
