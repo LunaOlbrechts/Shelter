@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Shelter.Shared
 {
     public class ShelterContext : DbContext

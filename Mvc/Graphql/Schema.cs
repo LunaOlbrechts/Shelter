@@ -26,7 +26,6 @@ namespace Mvc
                     id: ID,
                     name: String
                 }
-          
                 type Query{
                     shelters: [Shelter]
                     animals: [Animal]
