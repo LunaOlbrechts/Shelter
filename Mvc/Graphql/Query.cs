@@ -20,7 +20,6 @@ namespace Mvc
         {
             return "Hello Query class";
         }
-
         [GraphQLMetadata("shelters")]
         public IEnumerable<Shelter.Shared.Shelters> GetShelters()
         {
@@ -29,7 +28,6 @@ namespace Mvc
                 return null;
             }
         }
-
         [GraphQLMetadata("animals")]
         public IEnumerable<Shelter.Shared.Animal> GetAnimals()
         {
@@ -39,8 +37,5 @@ namespace Mvc
                 .ToList();
             }
         }
-
-
-
     }
 }
