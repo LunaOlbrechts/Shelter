@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using GraphQL;
 using GraphQL.Types;
+using Shelter.Shared;
 
 namespace Mvc
 {
