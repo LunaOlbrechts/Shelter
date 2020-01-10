@@ -23,7 +23,6 @@ namespace Mvc
                     adress: String,
                     animals: [Animal]
                 }
-
                 type Animal{
                     id: ID,
                     name: String,
