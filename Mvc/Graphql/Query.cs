@@ -13,11 +13,7 @@ namespace Mvc
 {
     public class Query
     {
-        private readonly IShelterDataAccess _dataAccess;
-        public Query(IShelterDataAccess dataAccess)
-        {
-            _dataAccess = dataAccess;
-        }
+     
 
         [GraphQLMetadata("hello")]
         public string GetHello()
@@ -25,10 +21,7 @@ namespace Mvc
             return "Hello Query class";
         }
 
-        [GraphQLMetadata("animal")]
-        public IEnumerable<Shelter.Shared.Animal> GetAnimals(int animalId)
-        {
-            return _dataAccess.GetAnimals(animalId);
-        }
+
+     
     }
 }
